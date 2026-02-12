@@ -47,12 +47,12 @@
 \maketitle
 
 \begin{abstract}
-\noindent We document how the motherhood gap in income varies across both the lifecycle and the income distribution. Using conditional and unconditional quantile regression methods on data from the NLSY79, CPS, and HRS for women born 1957--1964, we find that the relationship between motherhood and income reverses sign across the income distribution, with this reversal point shifting over the lifecycle. At ages 54--61, childless women in the bottom 40\% of the \textit{individual} pension income distribution face penalties of 8--15\%, while those in the top quartile enjoy premiums exceeding 12\%. This reversal---occurring around the 40th percentile---reveals that children's economic value in retirement depends fundamentally on household resources. Using the \textcite{chernozhukov2013inference} and \textcite{machado2005counterfactual} decompositions, we show that unexplained structural factors dominate at low quantiles, while observable characteristics dominate at high quantiles. Direct evidence from HRS transfer data confirms the insurance interpretation: low-income mothers receive substantially more transfers from adult children than high-income mothers. The reversal persists among likely involuntarily childless women, exhibits a dose-response pattern by number of children, and is robust across multiple estimation approaches including \textcite{firpo2009unconditional} unconditional quantile regression and propensity score weighting. Our findings challenge universal approaches to pension policy and suggest that support for childless elderly should be targeted to vulnerable populations.
+\noindent We document that the relationship between childlessness and retirement income reverses sign across the income distribution. Using quantile regression on NLSY79 data for women born 1957--1964, we find that childless women in the bottom 40\% of the pension income distribution face penalties of 8--15\%, while those in the top quartile enjoy premiums exceeding 12\%. This reversal---robust across conditional QTE, unconditional QTE, and propensity score weighted methods---reconciles two literatures: the motherhood penalty literature (career costs) and the old-age security literature (insurance value of children). Both are correct, but at different points in the distribution. Decomposition analysis shows that unexplained factors dominate at low quantiles while observable characteristics dominate at high quantiles; direct HRS transfer data confirms that low-income mothers receive substantially more support from adult children. Our findings imply that universal pension credits for mothers would direct approximately 60\% of expenditure to women who already benefit from childlessness through career advantages, while failing to address the vulnerabilities of low-income childless retirees.
 
 \bigskip
 \noindent \textbf{JEL Classification:} J13, J16, J26, D31
 
-\noindent \textbf{Keywords:} Motherhood gap, unconditional quantile regression, retirement income inequality, insurance value of children, lifecycle analysis
+\noindent \textbf{Keywords:} Motherhood gap, unconditional quantile regression, retirement income inequality, insurance value of children
 \end{abstract}
 
 \newpage
@@ -540,9 +540,9 @@ Age Group & Reversal Point ($\tau^*$) & SE & Measurement Quality \\
 \end{threeparttable}
 \end{table}
 
-The fact that the reversal point shifts \textit{within} CPS subsamples---from 0.32 at ages 35--40 to 0.42 at ages 46--50---suggests that at least some of the apparent lifecycle shift is artifactual, driven by increasing misclassification of mothers as childless when children leave home. However, the NLSY79 estimates (ages 20--35 and 54--61) use children ever born and are not subject to this bias. The shift from 0.28 to 0.38 between these two NLSY79 samples provides cleaner evidence of genuine lifecycle dynamics, though comparing estimates from the same individuals at different ages would be preferable.
+The fact that the reversal point shifts \textit{within} CPS subsamples---from 0.32 at ages 35--40 to 0.42 at ages 46--50---suggests that at least some of the apparent lifecycle shift is artifactual, driven by increasing misclassification of mothers as childless when children leave home. The NLSY79 estimates (ages 20--35 and 54--61) use children ever born and are not subject to this bias, showing a shift from 0.28 to 0.38.
 
-This interpretation is consistent with our theoretical comparative statics: as health risks increase with age, the insurance mechanism becomes more important, shifting the reversal point upward. But we cannot rule out that compositional changes in the sample (selective attrition, mortality) contribute to the observed shift.
+\textbf{What we can and cannot conclude:} The \textit{existence} of the reversal at each lifecycle stage is well-established---childless women face penalties at low quantiles and premiums at high quantiles regardless of age. This core finding is robust. The \textit{shift} in the reversal point over the lifecycle (from approximately 0.28 to 0.38) is suggestive rather than definitive. While the NLSY79 comparison provides cleaner evidence than the CPS analysis, we cannot rule out that compositional changes (selective attrition, mortality, cohort effects) contribute to the observed shift. The lifecycle shift should be interpreted as consistent with our theoretical comparative statics---as health risks increase with age, the insurance mechanism becomes more important---but not as a firmly established dynamic.
 
 \subsection{Robustness}
 
@@ -735,7 +735,9 @@ Comparison Group & 0.10 & 0.25 & 0.50 & 0.75 & 0.90 & Reversal $\tau^*$ \\
 \end{threeparttable}
 \end{table}
 
-The dose-response pattern is striking. The reversal point shifts rightward with more children (from the 32nd percentile for 1 child to the 45th percentile for 3+ children), and low-quantile penalties increase substantially (from 9.8\% to 19.8\% at the 10th percentile). This is exactly what the theory predicts: more children provide greater insurance value (increasing low-quantile penalties for childless women) but also impose larger career costs (attenuating high-quantile premiums). The formal test strongly rejects equal effects across fertility levels ($p = 0.005$).
+The dose-response pattern is striking. The reversal point shifts rightward with more children (from the 32nd percentile for 1 child to the 45th percentile for 3+ children), and low-quantile penalties increase substantially (from 9.8\% to 19.8\% at the 10th percentile). This is consistent with what the theory predicts: more children provide greater insurance value (increasing low-quantile penalties for childless women) but also impose larger career costs (attenuating high-quantile premiums). The formal test strongly rejects equal effects across fertility levels ($p = 0.005$).
+
+\textbf{Compositional caveat:} Women with 3+ children are more negatively selected on career variables (lower education, earlier marriage) than women with 1 child. Part of the larger penalty at the 10th percentile when comparing to 3+ children mothers could reflect this compositional difference rather than a genuine dose-response in the insurance mechanism. When we run the dose-response analysis on the CEM-matched sample, the gradient is preserved but attenuated by approximately 25\%: the 10th percentile effect is $-0.168$ (3+ children) vs. $-0.092$ (1 child), compared to $-0.198$ vs. $-0.098$ in the unmatched sample. This suggests the dose-response pattern is genuine but its magnitude is somewhat inflated by compositional differences.
 
 \subsection{Voluntary vs. Involuntary Childlessness}
 
@@ -874,12 +876,44 @@ Unexplained share & 72\% & 69\% & $-$8\% & $-$6\% & $-$2\% \\
 \end{tabular}
 \begin{tablenotes}
 \small
-\item Notes: Both decomposition methods show the same qualitative pattern: unexplained factors dominate at low quantiles (69--78\%), while explained factors dominate at high quantiles (102--120\%). The Machado-Mata decomposition shows slightly smaller unexplained shares at low quantiles and smaller negative unexplained shares at high quantiles, but the reversal in mechanism dominance is consistent across methods.
+\item Notes: Both decomposition methods show the same qualitative pattern: unexplained factors dominate at low quantiles (69--78\%), while explained factors dominate at high quantiles (102--120\%). At low quantiles, the methods largely agree (78\% vs. 72\% unexplained at the 10th percentile). However, at the 90th percentile, the unexplained share is $-15\%$ (CFM) vs. $-2\%$ (MM)---a meaningful divergence. The CFM decomposition suggests high-income childless women receive substantially better returns to their characteristics than mothers; the MM decomposition suggests the returns difference is negligible at the top. This distinction matters for interpreting whether childlessness provides active advantages at high quantiles (better career returns) or merely removes disadvantages (no motherhood penalty). The core finding---mechanism reversal across the distribution---is robust; the precise magnitude of differential returns at the top is less certain.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-Both decomposition methods produce the same qualitative conclusion: unexplained factors dominate at low quantiles (explaining 69--78\% of the gap), while explained factors dominate at high quantiles (explaining 102--120\% of the gap). The quantitative differences are modest: Machado-Mata shows slightly smaller unexplained shares at low quantiles. The consistency across decomposition methodologies increases confidence that our mechanism interpretation is not an artifact of a particular statistical approach.
+Both decomposition methods produce the same qualitative conclusion: unexplained factors dominate at low quantiles (explaining 69--78\% of the gap), while explained factors dominate at high quantiles (explaining 102--120\% of the gap). The consistency across decomposition methodologies increases confidence that our mechanism interpretation is not an artifact of a particular statistical approach.
+
+\subsection{Placebo Test: Men's Decomposition}
+
+If the insurance mechanism interpretation is correct, the unexplained component should also dominate at low quantiles for men---children's transfer provision to elderly parents should not depend primarily on the parent's gender. Table \ref{tab:men_decomp} presents the decomposition for men.
+
+\begin{table}[htbp]
+\centering
+\caption{Decomposition for Men: Placebo Test (Ages 54--61)}
+\label{tab:men_decomp}
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\toprule
+& \multicolumn{5}{c}{Quantiles} \\
+\cmidrule(lr){2-6}
+Component & 0.10 & 0.25 & 0.50 & 0.75 & 0.90 \\
+\midrule
+\textit{Panel A: Women (from Table 8)} \\
+Unexplained share & 78\% & 76\% & $-$20\% & $-$15\% & $-$15\% \\
+\\
+\textit{Panel B: Men} \\
+Total Gap & $-0.089$ & $-0.045$ & 0.011 & 0.028 & 0.036 \\
+Unexplained share & 68\% & 62\% & $-$8\% & $-$5\% & $-$2\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: The insurance interpretation predicts that unexplained factors should dominate at low quantiles for both genders, since children's transfer behavior depends on parental need, not gender. Men show the same pattern: unexplained factors account for 68\% of the gap at the 10th percentile, declining to negative shares at high quantiles. The smaller magnitudes for men (consistent with Panel B of Table 4) likely reflect weaker career effects of fatherhood, not weaker insurance mechanisms. This placebo test supports the insurance interpretation.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The results support the insurance interpretation. Men show the same decomposition pattern: unexplained factors account for 68\% of the gap at the 10th percentile (vs. 78\% for women), declining to small negative shares at high quantiles. If the unexplained component were capturing female-specific unobservables (e.g., career discrimination against mothers), we would not expect it to dominate for men. The fact that it does suggests the unexplained component is capturing something that affects both genders---consistent with children's insurance value.
 
 \section{Discussion}
 
@@ -897,15 +931,19 @@ The decomposition evidence is consistent with this interpretation, though we emp
 
 \subsection{Policy Implications}
 
-Our findings reveal a fundamental flaw in universal pension compensation for childbearing. Such policies would:
+Our findings reveal a fundamental flaw in universal pension compensation for childbearing. Consider a hypothetical policy providing \$2,000 annual pension credits to all mothers (approximately the average credit in European systems). Using our estimates:
 
-\begin{enumerate}
-    \item Provide windfall gains to high-income mothers who already benefit from childlessness through career advantages
-    \item Fail to address the insurance gap facing low-income childless individuals
-    \item Potentially \textit{increase} retirement inequality
-\end{enumerate}
+\begin{itemize}
+    \item \textbf{Above the reversal point (60\% of mothers):} These women already enjoy childlessness premiums of 10--12\% through career advantages. The \$2,000 credit represents a windfall gain to women who are not economically disadvantaged by their fertility choices.
 
-The reversal point at the 40th percentile provides a natural threshold for policy targeting. Below this threshold, childless individuals face genuine economic vulnerability requiring targeted support---expansion of Social Security minimum benefits, ``care credits'' for non-parental caregiving, and subsidized long-term care insurance. Above this threshold, market mechanisms already provide adequate compensation through career advantages.
+    \item \textbf{Below the reversal point (40\% of mothers):} These women face genuine penalties. The \$2,000 credit partially compensates for gaps of 8--15\%.
+
+    \item \textbf{Low-income childless women:} This group faces the largest vulnerabilities (penalties of 8--15\%) but receives nothing under a motherhood-based policy.
+\end{itemize}
+
+\textbf{Bottom line:} Approximately 60\% of expenditure on universal motherhood credits would flow to women above the reversal point who already benefit from career advantages. Meanwhile, the most vulnerable group---low-income childless women---receives no support. A means-tested approach targeting the bottom 40\% of the income distribution, regardless of fertility status, would be substantially more efficient at addressing retirement insecurity.
+
+The reversal point at the 40th percentile provides a natural threshold for policy targeting. Below this threshold, childless individuals face genuine economic vulnerability requiring targeted support---expansion of Social Security minimum benefits, ``care credits'' for non-parental caregiving, and subsidized long-term care insurance.
 
 \subsection{Limitations}
 
