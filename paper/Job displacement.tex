@@ -1,0 +1,1129 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[margin=.9in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subcaption,placeins}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{bm}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=blue,
+    linkcolor=blue
+}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\PassOptionsToPackage{sloppy}{url}\usepackage{hyperref}
+\urlstyle{same}
+
+\usepackage{cleveref}
+\usepackage{ctable}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+\usepackage{makecell}
+\usepackage{bbm}
+\usepackage{comment}
+
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\newcommand{\indicator}[1]{\mathbf{1}\{#1\}}
+
+\newcommand{\point}[1]{\noindent {\color{purple} $\bullet$ \bfseries #1 }}
+
+%%%%%%%% uncomment for natbib; also make change to printing bibliography %%%%%
+%\usepackage{natbib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% uncomment for biber; also make change to printing bibliography %%%%%%
+%%%%%%%% note: may also have to remove some bibliography files if %%%%%%%%%%%%
+%%%%%%%% switching from natbib to biber %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[bibstyle=numeric, citestyle=authoryear, doi=false, url=true, backend=biber, maxbibnames=10, maxcitenames=4, uniquelist=false, uniquename=false, sorting=nyt]{biblatex}
+\renewbibmacro{in:}{}
+\DeclareNameAlias{default}{family-given/given-family}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\citet}{\textcite}
+\addbibresource{laborrefs.bib}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{inneruassumption}{}
+\newenvironment{namedassumption}[1]
+  {\renewcommand\theinneruassumption{#1}\inneruassumption}
+  {\endinneruassumption}
+  
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{lemma}{Lemma}{Lemmas}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+    \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
+    \copy0\kern-\wd0\mkern4mu\box0}}
+%%need an 11 pt font size for subsection and abstract headings 
+%\def\subsize{\@setsize\subsize{12pt}\xipt\@xipt}
+%%make section titles bold and 12 point, 2 blank lines before, 1 after
+%\def\section{\@startsection {section}{1}{\z@}{2.0ex plus
+%		2ex minus .2ex}{.2ex plus .2ex}{\large\bf}}
+%%make subsection titles bold and 11 point, 1 blank line before, 1 after
+%\def\subsection{\@startsection 
+%	{subsection}{2}{\z@}{.2ex plus 1ex} {.2ex plus .2ex}{\subsize\bf}}
+%\makeatother
+\renewcommand{\baselinestretch}{1.3} 
+%%\usepackage[bibstyle=numeric, citestyle=authoryear, doi=false, url=true, backend=biber, maxbibnames=10, maxcitenames=4, uniquelist=false, uniquename=false, sorting=nyt]{biblatex}
+%%\renewbibmacro{in:}{}
+%%\DeclareNameAlias{default}{last-first/first-last}
+%\bibliography{laborrefs} % Entries are in the refs.bib file
+%%\addbibresource{laborrefs.bib}
+
+
+\begin{document}
+\title{No Kids, No Cash? The Curious Case of the Diminishing Childlessness Penalty Across Pension Quantiles}
+
+\date{\today }
+\author{Afrouz Azadikhah Jahromi\footnote{School of Business Administration, Widener University, Email: ajahromi@widener.edu}, Alina Malkova\footnote{}}
+% \footnote{I thank for their comments and suggestions}}
+
+\maketitle
+
+\begin{abstract}
+\setstretch{}
+This study investigates the heterogeneous relationship between childlessness and household pension income across the income distribution using quantile regression analysis. Contrary to assumptions of uniform effects, we find marked differences between income segments. Childlessness correlates with substantially reduced household pension incomes for lower-income households, particularly those headed by women. This relationship systematically reverses in middle and upper-income brackets, where childlessness is associated with pension premiums that grow progressively larger at the highest income levels. These findings challenge conventional understandings of the economic consequences of fertility decisions and suggest that family structure interacts with economic outcomes in fundamentally different ways depending on household resources, gender, and socioeconomic status. 
+\end{abstract}
+
+\bigskip
+
+\noindent \textbf{JEL classification:} J63, J16, J31
+
+\bigskip
+
+\noindent \textbf{Keywords:} Wage Inequality, Job Displacement, Quantile Regression, Oaxaca Decomposition, Distribution of the Treatment Effect.
+
+\pagebreak
+
+\onehalfspacing
+
+
+\section*{Introduction}
+
+
+
+\par Women have historically faced more difficulty than men in acquiring individual pension rights due to their lower labor market participation and earnings, which are in part attributed to their dominant role in domestic responsibilities and childcare (\cite{ponthieux2015gender, gimenez2012total, bianchi2012changing}). Career interruptions and part-time work related to motherhood have been shown to impact women's earnings negatively (\cite{mincer1974schooling, mincer1982interruption}), leading to what is commonly known as the "motherhood wage penalty" (\cite{lundberg2000family, davies2005family, gangl2009motherhood, beblo2009wage, meurs2010impact}).
+This wage gap, which typically ranges between 2--10\% for one child and 5--15\% for two or more children in most non-Nordic countries (\cite{ponthieux2015gender},) accumulates over the life cycle and affects pension entitlements (\cite{adda2017career, davies2000private, brugiavini2011pensions, sefton2011gender, mohring2015employment, peeters2015effect, neels2018employment, rutledge2017does}). 
+\par The motherhood penalty has long-term consequences for women's retirement income. This effect is not uniformly distributed; rather, it is more severe among low-income and part-time working mothers. \citet{budig2001penalty} document that the wage penalty per child is significantly more significant for women in low-wage jobs than those in high-wage occupations. This wage gap compounds over the life cycle and leads to disparities in pension accumulation. \citet{mohring2018motherhood}  examine the impact of motherhood on retirement income across 13 European countries. They find that mothers generally receive lower pension benefits, but the extent of the penalty varies depending on institutional factors, such as the generosity of public pensions and the availability of childcare services. Countries with strong welfare states tend to mitigate the penalty, while others exacerbate it. A related study by \citet{matysiak2021childcare} investigates the Russian context, emphasizing how gaps in childcare provision and pension design increase the long-term disadvantage faced by mothers. Extended childcare breaks often lead to insufficient pension contributions, deepening income inequality in old age.
+
+
+\par However, while existing research has established the link between motherhood penalties and lower pension outcomes, the distributional aspects of these penalties across different socioeconomic groups remain largely unexplored in the literature. Understanding these distributional effects is crucial, as the child-related pension disadvantages likely vary significantly across the income distribution, with potentially more severe consequences for economically vulnerable women. This analysis is particularly important for policy design, as universal pension compensation mechanisms for childcare may inadvertently benefit higher-income women disproportionately, potentially exacerbating rather than reducing inequality among female pensioners. Furthermore, the relationship between lifetime earnings and pension benefits is shaped by institutional factors such as the pension system's design (\cite{sefton2011gender, mohring2015employment, bonnet2020there}), making it essential to examine how these systems may amplify or mitigate the distributional effects of motherhood penalties.
+
+\textbf{
+Limitations} While we cannot eliminate endogeneity concerns, our analysis provides three advances: (1) We document previously unknown heterogeneity in the childlessness-pension relationship across the income distribution; (2) We bound the potential bias using multiple approaches, showing our qualitative findings are robust; (3) We decompose observable from unobservable factors, providing guidance for future research seeking exogenous variation. Our results should be interpreted as robust conditional correlations that reveal important patterns requiring explanation, whether through selection or causal mechanisms.
+
+
+\section*{Literature Review}
+Our study contributes to several strands of literature examining the complex relationships between fertility decisions, lifecycle savings, and retirement outcomes. We organize this review around four key themes that inform our analysis.
+
+\textbf{Selection into Parenthood.} Recent theoretical and empirical work has emphasized the endogenous nature of fertility decisions and their correlation with economic outcomes. \citet{baudin2015fertility} develops a structural model of fertility choice that identifies three distinct reasons for childlessness: poverty-driven childlessness among the poor who cannot afford children, opportunity-cost driven childlessness among high earners, and a middle group for whom social sterility and relationship market frictions matter most. Using U.S. data, they find childlessness rates follow a U-shaped pattern across the income distribution, with different mechanisms operating at each end.
+
+\citet{gobbi2013model} presents a dynamic model where voluntary childlessness emerges from the interaction between wage rates, time costs of children, and preferences for consumption. The model predicts that childlessness should increase with women's wages, particularly when the opportunity cost of time is high. This framework suggests selection into childlessness based on economic potential that could persist into retirement years.
+
+\citet{aaronson2014fertility} examines fertility transitions using quasi-experimental variation from the rollout of Rosenwald schools in the early 20th-century American South. They distinguish between extensive margin effects (having any children) and intensive margin effects (number of children conditional on having any), finding that education affects these margins differently across the income distribution. Their evidence suggests that human capital investments that increase opportunity costs primarily affect the intensive margin for poor women but the extensive margin for richer women.
+
+Our contribution to this literature is to trace these selection patterns through to retirement outcomes. While these papers establish that selection into childlessness varies across the income distribution during childbearing years, we demonstrate that these selection patterns have long-lasting consequences that manifest differently in pension income across income quantiles. Our decomposition approach allows us to separate selection on observables from structural differences in returns, providing new evidence on whether early-life selection patterns persist into retirement.
+
+\textbf{Lifecycle Savings with Children.}
+The lifecycle savings literature has increasingly recognized that children fundamentally alter household financial behavior and savings trajectories. \citet{scholz2006americans} develop a lifecycle model incorporating uncertain medical expenses, progressive taxation, and government transfer programs to assess whether Americans save optimally for retirement. They find that fewer than 20\% of households have net worth below their optimal targets, but crucially, their model shows that optimal savings vary substantially with family size and composition. Households with children face different consumption commitments and savings capacities throughout the lifecycle.
+
+\citet{love2010effects} uses the Panel Study of Income Dynamics to examine how children affect portfolio allocation, savings rates, and wealth accumulation. He finds that each child reduces household wealth by approximately 2.5\% through reduced savings and more conservative investment choices, with effects varying by household income. High-income households adjust primarily through portfolio reallocation, while low-income households reduce savings rates.
+
+\citet{cagetti2003wealth} constructs a lifecycle model with precautionary savings motives and borrowing constraints to explain wealth inequality. His model demonstrates that children create competing effects: they increase precautionary savings motives (protecting against risks to children's welfare) while simultaneously increasing current consumption needs and reducing savings capacity. The net effect depends on household resources and risk exposure, potentially explaining heterogeneous effects across the income distribution.
+
+We extend this literature by examining the ultimate retirement outcomes of these different savings trajectories. While previous work focuses on accumulation phases, we show how childhood-influenced savings patterns translate into pension income disparities. Our quantile regression approach reveals that the lifecycle savings effects documented in this literature have non-uniform consequences across the retirement income distribution, with childlessness penalties at the bottom but premiums at the top.
+
+\textbf{Insurance Value of Children.} A growing literature examines children as providers of insurance and old-age support, particularly in contexts with incomplete financial markets. \citet{oliveira2016value} develops a quantitative model where children provide insurance through state-contingent transfers, caregiving, and co-residence options. Using Brazilian data, he shows that the insurance value of children can explain up to 20\% of fertility in low-income households but is negligible for high-income families who can purchase market insurance. \citet{banerjee2013marry} study marriage markets in India to understand the economic value of family formation. They document that parents explicitly consider potential in-laws' ability to provide old-age support when arranging marriages, with this consideration most important for lower-caste (poorer) families. Their findings suggest that the insurance value of children and extended family networks is capitalized into marriage market outcomes, with larger effects for economically vulnerable populations.
+
+\citet{ebenstein2010son} examine how son preference interacts with old-age support expectations in China, where sons traditionally provide parental support. They find that parents with sons have significantly higher pension income and better health outcomes in old age, with effects concentrated among rural and low-income populations who lack access to formal insurance mechanisms. The absence of sons (analogous to childlessness in their context) creates substantial economic vulnerability in retirement.
+
+Our analysis provides evidence from a developed country context with relatively complete financial markets, yet we still find patterns consistent with the insurance value of children at the bottom of the income distribution. This suggests that even in the U.S., with Social Security and developed financial markets, children continue to provide insurance value for low-income elderly. Our finding that childlessness penalties reverse to premiums at higher incomes aligns with theoretical predictions about the substitutability of formal and informal insurance mechanisms.
+
+\textbf{Gender and Pension Gaps.} The gender and pensions literature has documented substantial disadvantages faced by women in retirement income, with motherhood playing a complex role. \citet{jefferson2009women} provides a comprehensive review showing that women's pension disadvantages stem from multiple sources: career interruptions, part-time work, occupational segregation, and discriminatory pension plan designs. She emphasizes that these factors compound over the lifecycle, with motherhood penalties accumulating into substantial pension gaps.
+
+\citet{ginn2003gender} develops a life-course perspective on pension accumulation, arguing that gendered care responsibilities create path dependencies that culminate in retirement income inequality. Her analysis of British data shows that each child reduces women's pension income by approximately 5\%, but effects vary by class background and employment sector. Women in professional occupations can mitigate motherhood penalties through continuous employment, while working-class women face compounding disadvantages.
+
+\citet{frericks2009pension} compare pension systems across European countries, examining how different institutional designs mediate the relationship between motherhood and retirement income. They find that systems with generous care credits can eliminate or even reverse motherhood penalties, while contribution-based systems without such provisions create substantial gaps. Their cross-national analysis reveals that the motherhood-pension relationship is highly sensitive to institutional design.
+
+Our contribution bridges these literatures by examining how childlessness—rather than motherhood—affects retirement income across the distribution. While most gender and pension research focuses on penalties faced by mothers, we document a more complex pattern where childless women face penalties at the bottom of the income distribution but advantages at the top. This reversal suggests that the relationship between fertility and retirement security cannot be understood through average effects alone but requires attention to distributional heterogeneity. Our decomposition method advances this literature by separating compositional differences (different characteristics of mothers versus childless women) from structural differences (different returns to those characteristics), providing new insights into the mechanisms generating pension inequality.
+
+\textbf{Synthesis and Contribution.}
+Taken together, these literatures suggest that the relationship between childlessness and retirement income should vary across the income distribution through multiple channels: selection into parenthood, altered savings trajectories, differential insurance value of children, and gendered institutional structures. However, no previous study has systematically examined these distributional effects in retirement outcomes. Our paper fills this gap by using quantile regression and decomposition methods to reveal that childlessness creates disadvantages for low-income retirees but advantages for high-income retirees, with effects varying by gender. These findings challenge universal policy approaches to retirement security and suggest that support for childless elderly should be targeted to vulnerable populations rather than applied uniformly.
+
+
+\section*{Theoretical Framework}
+
+The relationship between childlessness and retirement income is theoretically ambiguous, with competing mechanisms suggesting different patterns across the income distribution. We outline four main theoretical perspectives that generate distinct predictions.
+
+\textbf{Human Capital Theory Perspective.} The human capital framework, originating with \citet{mincer1974schooling} and \citet{becker1985human}, predicts that parenthood reduces pension income through labor market interruptions and reduced investment in market-specific human capital. \citet{mincer1978family} formalizes how childbearing interrupts careers, leading to depreciation of human capital and lower wage growth trajectories. Parents, particularly mothers, face time allocation constraints that reduce labor supply at both intensive and extensive margins (\cite{gronau1977leisure}, \cite{killingsworth1986female}). 
+
+Under standard human capital theory, these effects should be roughly proportional across the income distribution—a 20\% earnings reduction from child-rearing should translate to approximately 20\% lower pensions regardless of baseline income level. However, \citet{weiss1986determination} notes that the opportunity cost of time varies across the wage distribution, potentially creating non-linear effects.
+
+\textbf{Insurance and Old-Age Security Hypothesis.} An alternative framework views children as providing insurance and old-age security, particularly in contexts with incomplete financial markets \citet{nugent1985old}. \citet{boldrin2002fertility} develop a model where children serve as substitutes for missing annuity markets, with parents investing in children's human capital in exchange for old-age support. This mechanism is particularly important for low-income households that lack access to formal insurance mechanisms.
+
+\citet{ray2018missing} extends this framework to show that the insurance value of children decreases with wealth, as high-income individuals can purchase market substitutes (long-term care insurance, annuities, professional services). Their model predicts that childlessness should create larger pension disadvantages at the bottom of the income distribution, where children's insurance value is highest. \citet{banerjee2013marry} provides empirical support, showing that in contexts with weak social insurance, the economic value of children is concentrated among the poor.
+
+\textbf{Selection and Savings Behavior.} The selection framework emphasizes that fertility decisions are endogenous to career orientations and savings preferences. \citet{goldin2021career} documents how career-focused women increasingly select into childlessness, particularly in high-skilled occupations. These individuals simultaneously exhibit higher savings rates and greater human capital investment. 
+
+\citet{baudin2015fertility} formalize this selection mechanism, showing that childlessness is driven by both "poverty" (inability to afford children) and "opportunity cost" (high wages making children too expensive). Their model predicts a U-shaped relationship between income and childlessness, with different selection mechanisms operating at each end. At high incomes, positive selection into childlessness (through career orientation) should create a positive correlation with pension wealth. \citet{gobbi2013model} extends this by showing that voluntary childlessness is increasingly concentrated among high earners who substitute consumption for fertility.
+
+\textbf{Institutional Design Theory.} Pension systems contain explicit and implicit transfers to parents that create mechanical differences in retirement income by parental status. \citet{fenge2009family} analyzes how pay-as-you-go pension systems create positive externalities from childbearing that are not internalized by parents. \citet{cigno2010avoid} demonstrate that optimal pension design might explicitly reward childbearing to correct this externality.
+
+In the U.S. context, Social Security provides spousal and survivor benefits that effectively transfer resources to married parents (\cite{gustman1994social}). \citet{steuerle2000retooling} calculates that a single childless woman receives approximately \$200,000 less in lifetime Social Security benefits compared to a married mother with identical earnings histories. Many European systems include explicit child care credits that increase pension entitlements (\cite{d2012pension}, \cite{bonnet2020there}).
+
+These institutional features create predictable differences: childless individuals mechanically receive lower benefits through exclusion from family-based transfers. The relative importance of these transfers decreases with income, as high earners' benefits are increasingly determined by their own earnings records rather than auxiliary benefits.
+
+\textbf{Synthesis and Testable Predictions.} These theoretical frameworks generate distinct, testable predictions about how the relationship between childlessness and pension income should vary across the income distribution. The human capital theory predicts a uniform proportional penalty from childlessness across all income levels—if career interruptions reduce earnings by a constant percentage, pension reductions should be similarly proportional regardless of baseline income. We test this by examining whether the quantile treatment effects remain constant across the distribution, expecting parallel effects at the 10th, 50th, and 90th percentiles under this hypothesis.
+
+The insurance hypothesis, in contrast, predicts that childlessness penalties should be concentrated at the bottom of the income distribution, where children's role as old-age insurance is most valuable. This theory suggests that quantile regression coefficients should be strongly negative at lower percentiles and approach zero or become positive at higher percentiles, as wealthy individuals can purchase market substitutes for the insurance value of children. Our decomposition analysis allows us to test whether this pattern emerges primarily through the structural component, reflecting different returns to characteristics rather than compositional differences.
+
+Selection theory generates a more complex prediction: negative effects of childlessness at the bottom of the distribution (where involuntary childlessness may correlate with other disadvantages) but positive effects at the top (where voluntary childlessness reflects career orientation and higher savings propensities). This would manifest as a monotonically increasing quantile function, crossing zero somewhere in the middle of the distribution. The decomposition into composition and structure effects helps identify whether observed patterns reflect selection on observables versus unobserved heterogeneity in returns.
+
+Finally, the institutional design hypothesis predicts mechanical penalties from childlessness that decrease with income, as family-based benefits like spousal and survivor Social Security payments represent a larger share of total retirement income for low earners. We test this by examining whether the childlessness penalty is larger at lower quantiles and whether the composition effect (reflecting mechanical institutional features) explains a substantial portion of the observed gap. The hypothesis further predicts that the penalty should be relatively stable within demographic groups once we control for marital status, given that many institutional benefits are marriage-dependent.
+
+Our quantile regression framework, combined with the Chernozhukov-Fernández-Val-Melly decomposition method, allows us to distinguish between these competing mechanisms by examining both the magnitude and sources of childlessness effects across the pension income distribution. The patterns we observe—particularly whether effects are constant, monotonic, or non-monotonic across quantiles, and whether they arise through composition or structure channels—will help adjudicate between these theoretical predictions.
+
+
+
+
+
+ \section*{Data}
+\par The main database is RAND HRS Longitudinal File, providing a comprehensive dataset specifically designed for analyzing retirement, aging, and health outcomes among older Americans. For analyzing the penalty of having children on household pension income, this dataset offers several key advantages.
+The RAND HRS Longitudinal File contains harmonized and cleaned data from the Health and Retirement Study, following respondents aged 50 and older biannually since 1992. The dataset includes over 40,000 respondents across multiple waves, follows individuals and their spouses/partners longitudinally, contains detailed household composition information, and features comprehensive income and asset measures, including pension income.
+\par For examining the relationship between childbearing and pension income, the dataset provides detailed pension income variables (household and individual pension income from employer plans, income from retirement accounts, Social Security retirement benefits, and total household retirement income), fertility variables (number of children ever born, number of currently living children, timing of childbirths, and information on step-children and adopted children), employment history information (detailed work history, career interruptions, industry and occupation codes, and years of labor market experience), and important control variables (demographic characteristics, health status measures, marital history, household wealth, and geographic information).
+\par The RAND HRS file offers several methodological advantages, including consistent variable definitions across waves, imputed values for missing data using validated methods, cross-sectional and longitudinal weights to account for sample attrition, and detailed documentation of income and wealth measures. Limitations include recall bias for historical information and some missing data for pension details from earlier career periods.
+
+\par The summary statistics (Table 1) compares households with and without children using data from the RAND HRS Longitudinal Data. The results reveal substantial economic differences between these household types. Households without children report much higher average household earnings at \$53,062.33, compared to \$25,772.67 for households with children. This represents a substantial and statistically significant difference of \$27,289.67 (p-value = 0.00), suggesting that childless households earn more than twice as much as households with children.
+The demographic characteristics of both groups show several notable differences. While female representation is almost identical across both groups (1.56 for both) with a non-significant difference (p-value = 0.341), marriage rates differ considerably. About 57\% of households with children are married compared to only 42\% of childless households, a statistically significant difference. Education levels are significantly higher among households with children (3.32 versus 3.04), and households with children are slightly younger on average (69.01 years versus 69.45 years). The households with children have an average of 3.41 children. The sample includes 21,166 observations for households without children and 614,579 observations for households with children, indicating that the vast majority of households in the RAND HRS dataset have children.
+
+
+
+
+
+\newcolumntype{.}{D{.}{.}{-1}}
+\ctable[caption={Summary Statistics},label=,pos=!tbp,]{lrrrr}{\tnote[]{\textit{Notes}: .  \textit{Sources: The RAND HRS Longitudinal Data}}}{\FL
+\multicolumn{1}{l}{}&\multicolumn{1}{c}{No Kids}&\multicolumn{1}{c}{Kids}&\multicolumn{1}{c}{Difference}&\multicolumn{1}{c}{P-val on Difference}\ML
+{\bfseries Earnings}&&&&\NN
+~~HH Earnings&53062.33&25772.67&-27289.67&0.00\NN
+&(12237.27)& (12167.62)& &
+\ML
+{\bfseries Covariates}&&&&\NN
+~~Female&1.56&1.56&-0.003&0.341\NN
+~~Married&0.42&0.57&-0.15&0.00\NN
+~~Education&3.04&3.32&-0.29&0.00\NN
+~~Age&69.45&69.01&-0.44&0.00\NN
+~~Number of kids&0&3.41&3.41&0.00\ML
+Number of obs& 21,166 & 614,579 & &
+\LL
+}
+
+
+\vspace{-0.5cm}
+\section*{Methodology}
+This study examines the heterogeneous impact of having no children on log household income during pension years, utilizing a Quantile Treatment Effect (QTE) framework.  Unlike traditional Ordinary Least Squares (OLS) regression, which focuses on the average treatment effect, the QTE approach allows us to examine how the effect of no kids varies across different quantiles ($\tau$) of the outcome distribution. Coefficients are estimated through a
+two-step approach. In the first step, the treatment is regressed on control variables using
+ordinary least squares (OLS), and the residuals of the treatment variable are obtained.
+This step decomposes the variance of the treatment variable into a piece explained by
+the observed control variables and a residual piece that is orthogonal to the observed
+controls. Then, in the second step, the outcome is regressed on the residualized treatment
+variable using CQR algorithms. Conditional
+quantile regression (CQR) model (Koenker 2005), which estimates group-specific
+quantile differences. The 
+conditional quantile regression (CQR) model is specified as follows:
+
+\begin{equation}
+    Q_{\tau} (\ln HH~income_i | X_i) = \alpha_{\tau} + \beta_{\tau} \widehat{nokids}_i + \gamma_{\tau} X_i + \epsilon_{i, \tau}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $Q_{\tau} (\ln HH~income_i  | X_i)$ represents the conditional quantile function of log household income at quantile $\tau$.
+    \item $\alpha_{\tau}$ is the intercept.
+    \item $\beta_{\tau}$ is the quantile treatment effect of having no children.
+    \item $\widehat{nokids}_i$ is the residualized treatment variable obtained from the first-stage OLS regression.
+    \item $X_i$ is a vector of control variables with associated coefficients $\gamma_{\tau}$.
+    \item $\epsilon_{i, \tau}$ is the error term at quantile $\tau$.
+\end{itemize}
+
+
+
+
+\par In this paper, we follow the counterfactual analysis proposed by \cite{chernozhukov2013inference} in which we compare the observed pension income distribution of childless females with what their pension income distribution would have been if they faced the pension income distribution of females with kids (i.e., counterfactual).
+
+Let zero denote the population of females with kids and one denote the childless female population. Define variable $Y_{i}$ as earnings and $X_{i}$ as a set of covariates that affect the earnings for populations $j = 0$ and $j = 1$. Let $F_{Y(1|1)}$ and $F_{Y(0|0)}$ represent the observed distribution of earnings for childless and females with kids, respectively and let $F_{Y(0|1)}$ represents the counterfactual distribution function of earnings for childless  women that would have prevailed had they faced the earnings distribution for females with kids:
+
+
+
+
+\begin{equation}
+F_{Y(0|1)}(y) := \int_{\mathcal{X}_{1}} F_{Y_{0}|X_{0}}(y|x)dF_{X_{1}}(x) 
+\end{equation}
+Where $F_{Y_{0}|X_{0}}(y|x)$ is the conditional distribution of pension income for females with kids. $F_{Y(0|1)}(y)$ is constructed by integrating the conditional distribution of pension income for females with kids with respect to the distribution of characteristics for childless females. 
+
+
+
+
+\par The second goal is to decompose the gap between the distribution of pension income losses for childless females and females with kids:
+        \begin{center}
+        \centering
+   $ F_{\Delta_{ft}|X_{f}} - F_{\Delta_{mt}|X_{m}} =
+    \underbrace{[F_{\Delta_{ft}|X_{f}} - F_{\Delta_{mt}|X_{f}}]}_{\text {Structure Effect (discrimination)}} + \underbrace{[F_{\Delta_{mt}|X_{f}} - F_{\Delta_{mt}|X_{m}}]}_{\text{Composition Effect (characteristics)}}$\\
+   \end{center}
+ Where,  
+    \begin{align*}
+    F_{\Delta_{mt}|X_{f}}(\delta) := \int_{\mathcal{X}_{f}} F_{\Delta_{mt}|X_{m}}(\delta|x) dF_{X_{f}}(x) 
+          \end{align*} 
+          
+              \begin{align*}
+    \Delta_{t} = Y_{t}(1) - \widetilde Y_{t}(0)
+    \end{align*}\label{eq2}
+
+\par Follow \cite{chernozhukov2013inference} counterfactual effects analysis: the idea is mixing the distribution of characteristics of childless females, the pension income loss structure of females with kids. 
+  
+%$F_{\Delta_{ft}|X_{f}} - F_{\Delta_{mt}|X_{m}}$ measures the gap between the distribution of earning losses of women and the distribution of earning losses of men. The distribution of earning losses for men was similarly estimated following Steps 1 and 2 in the previous slides. The second goal of this paper is to decompose the gap between earnings loss distributions of men and women into explained and unexplained components, such as differences in observable characteristics versus unobservable factors like discrimination or preferences for specific job settings. For instance, \citet{crossley1994gender} and \citet{kunze2015gender} provide useful frameworks for understanding these dynamics, while \citet{chernozhukov2013inference} offers a robust methodology for decomposing the gap between the distributions into structural effects (returns to characteristics) and composition effects (differences in characteristics). 
+
+
+
+
+%Equation \ref{eq2} decomposes the difference in earning distributions between displaced men and women into two effects; the first bracket shows the difference in the wage structure between men and women (i.e., discrimination effect) which exists due to pay differences between displaced men and women with the same observed characteristics, and second bracket shows the composition effect, happens due to differences in observed characteristics between men and women.
+
+
+
+
+
+\section*{Results}
+
+
+
+
+
+
+\textbf{\textit{Females with No kids VS Females with Kids}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{females.png}
+    \caption{Females with No kids VS Females with Kids}
+    \label{fig:enter-label}
+\end{figure}
+The relationship between childlessness and pension-age income for women reveals distinct patterns across the income distribution. For women in lower income brackets (below the 40th percentile), not having children is associated with significantly reduced household incomes—approximately 5-11\% lower than their counterparts with children, even after accounting for demographic factors.
+Interestingly, this relationship inverts in the middle income range (40th-60th percentiles), where childless women actually enjoy slightly higher incomes, gaining a modest 2-5\% advantage. This reversal suggests different economic mechanisms may be at work in this segment of the population.
+For women in higher income brackets (above the 60th percentile), the effect of childlessness becomes less definitive and more variable. Here, the relationship fluctuates around zero with wider confidence intervals, indicating that having children makes little consistent difference to household income at this level.
+These findings suggest multiple interpretations: childlessness may create economic vulnerability for lower-income older women, possibly through reduced family support networks or lifetime earnings effects. Meanwhile, it might offer slight economic advantages for middle-income women. For affluent women, family composition appears to have minimal impact on their financial circumstances during pension years.
+
+\textbf{\textit{Females with No kids VS Females with Only 1 Kid}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{females(ovs1).png}
+    \caption{Females with No kids VS Females with Only 1 Kid}
+    \label{fig:enter-label}
+\end{figure}
+
+
+This quantile regression analysis reveals a nuanced relationship between childlessness and household income for women across the economic spectrum. At the lowest income quantiles (below the 20th percentile), women without children experience slightly lower household incomes—approximately 5-7\% less—compared to women with one child. This suggests that having one child may provide some economic advantages for women in lower income brackets, possibly through family support networks or targeted assistance programs.
+Around the 20th-40th percentile range, we observe a transition point where this relationship begins to reverse. As we move into middle and higher income quantiles (40th percentile and above), women without children consistently demonstrate higher household incomes than their counterparts with one child, enjoying a premium of roughly 5-8\%.
+This advantage becomes even more pronounced at the highest income levels (above the 80th percentile), where the childlessness premium approaches 10\%. This pattern suggests that while having one child may provide modest economic benefits for women in lower income brackets, childlessness becomes increasingly advantageous as we move up the socioeconomic ladder—likely reflecting different career progression opportunities, work-life balance considerations, and household resource allocation decisions that vary significantly across the income distribution.
+
+
+\textbf{\textit{All with No kids VS All with Kids}}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{all.png}
+    \caption{All with No kids VS All with Kids}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+This quantile regression plot illustrates the relationship between childlessness and household income across the entire income distribution, including all genders. The pattern reveals several key insights:
+At the lowest income quantiles (below the 15th percentile), individuals without children experience notably lower household incomes compared to those with children, with negative coefficients ranging from approximately -0.05 to -0.12. This suggests an economic disadvantage for childless households at the lower end of the income spectrum.
+Around the 20th percentile, a significant transition occurs as the relationship crosses the zero threshold. Beyond this point, throughout the middle income quantiles (20th-60th percentiles), childless individuals show consistently higher household incomes than their counterparts with children, with positive coefficients hovering around 0.03-0.05, indicating roughly a 3-5\% income advantage.
+The most striking feature appears in the upper income quantiles (above the 70th percentile), where the economic advantage of childlessness becomes more pronounced, with coefficients increasing to approximately 0.05-0.06, suggesting a more substantial income premium.
+This pattern indicates that while having children may provide economic benefits for lower-income households (possibly through support systems, tax benefits, or household composition factors), childlessness becomes increasingly advantageous as household income rises. This likely reflects complex interactions between career trajectories, time allocation decisions, and household resource distribution that vary significantly across socioeconomic strata.
+
+
+
+\textbf{\textit{All with No kids VS All with Only 1 Kid}}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{all(ovs1).png}
+    \caption{All with No kids VS All with Only 1 Kid}
+    \label{fig:enter-label}
+\end{figure}
+
+This quantile regression analysis examines income differences between individuals without children and those with exactly one child across the entire income distribution.
+The results reveal a distinct pattern that varies markedly by income level:
+At the lowest income quantiles (below the 10th percentile), people without children show substantially lower household incomes compared to those with one child, with negative coefficients reaching approximately -0.15 to -0.17. This represents a significant economic disadvantage of roughly 15-17\% lower income.
+Between the 15th and 20th percentiles, the relationship crosses the zero threshold, suggesting a transition point where childlessness no longer represents an economic disadvantage.
+Throughout the middle income quantiles (roughly 20th-70th percentiles), the relationship hovers close to zero, with slightly positive coefficients indicating minimal differences between childless individuals and those with one child. The confidence intervals consistently overlap with zero, suggesting these small differences may not be statistically significant.
+The most notable feature appears in the upper income quantiles (above the 70th percentile), where childlessness becomes increasingly associated with higher incomes. This advantage grows progressively stronger toward the highest income levels, with coefficients reaching 0.05-0.10 at the 90th percentile and approaching 0.15 at the very top of the distribution.
+This pattern suggests that while having one child may provide economic benefits for lower-income households, childlessness becomes progressively advantageous at higher income levels, particularly for the most affluent segment of the population.
+
+\subsection*{Decomposition}
+\par The main idea of \citet{chernozhukov2013inference} is to decompose the difference between two outcome distributions (e.g., retirement income) across quantiles into explained and unexplained components using counterfactual distributions.
+
+\par Let $Y_0$ be retirement earnings for females with kids (group 0) and $Y_1$ be retirement earnings for females without kids (group 1). Each group has its own set of observed covariates $X_0$ and $X_1$ (e.g., education, work experience, occupation).
+
+The conditional distribution functions are denoted as:
+$$F_{Y_j|X_j}(y|x), \quad j \in \{0,1\}$$
+
+The observed (marginal) distributions of retirement earnings are:
+$$F_{Y_j}(y) = \int F_{Y_j|X_j}(y|x)dF_{X_j}(x), \quad j \in \{0,1\}$$
+
+
+
+\textbf{Counterfactual Distributions} We define the key counterfactual distribution:
+$$F_{Y_{\langle 1|0 \rangle}}(y) = \int F_{Y_1|X_1}(y|x)dF_{X_0}(x)$$
+
+This represents: "What would the distribution of retirement earnings for females without kids look like if they had the same characteristics distribution as females with kids?"
+
+
+\textbf{Decomposition of Earnings Gap} The overall difference in retirement earnings distributions can be decomposed as:
+$$F_{Y_1}(y) - F_{Y_0}(y) = [F_{Y_1}(y) - F_{Y_{\langle 1|0 \rangle}}(y)] + [F_{Y_{\langle 1|0 \rangle}}(y) - F_{Y_0}(y)]$$
+
+\begin{itemize}
+\item The first term $[F_{Y_1}(y) - F_{Y_{\langle 1|0 \rangle}}(y)]$ represents the ``composition effect'' -- the part of the earnings gap due to differences in characteristics (e.g., different career interruptions, education levels, or occupational sorting).
+
+\item The second term $[F_{Y_{\langle 1|0 \rangle}}(y) - F_{Y_0}(y)]$ represents the ``structure effect'' -- the part due to differences in how the same characteristics translate to retirement earnings (e.g., possible discrimination or motherhood penalties).
+\end{itemize}
+
+
+\textbf{Estimation Approach} We estimate the conditional distributions using distribution regression:
+$$F_{Y_j|X_j}(y|x) = \Lambda(x'\beta_j(y))$$
+
+where $\Lambda$ is a link function (e.g., logit) and $\beta_j(y)$ are parameters that vary with the earnings level $y$.
+
+The counterfactual distributions are estimated as:
+$$\hat{F}_{Y_{\langle 1|0 \rangle}}(y) = \frac{1}{n_0} \sum_{i=1}^{n_0} \Lambda(X_{0i}'\hat{\beta}_1(y))$$
+
+
+\textbf{Inference on Entire Earnings Distributions} The asymptotic theory shows:
+$$\sqrt{n}(\hat{F}_{Y_{\langle j|k \rangle}}(y) - F_{Y_{\langle j|k \rangle}}(y)) \Rightarrow \mathbb{G}_{jk}(y)$$
+
+where $\mathbb{G}_{jk}(y)$ is a Gaussian process. This allows us to conduct inference on the entire distribution of the retirement earnings gap, not just mean differences.
+
+
+\textbf{Quantile Treatment Effects.} We can examine the gap at specific quantiles $\tau$ by defining:
+$$QTE(\tau) = Q_{Y_1}(\tau) - Q_{Y_0}(\tau)$$
+
+where $Q_{Y_j}(\tau) = \inf\{y: F_{Y_j}(y) \geq \tau\}$.
+
+The decomposition allows us to separate this quantile gap into composition and structure effects, revealing whether the motherhood retirement penalty differs across the earnings distribution.
+
+
+
+
+\par Figure \ref{fig:decom_fem} represents a quantile decomposition of the log of retirement income between two groups of females: a reference group (women with children ) and a counterfactual group (females without children), using the Chernozhukov-Fernández-Val-Melly (2013) method.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{females decomposition.png}
+    \caption{Enter Caption}
+    \label{fig:decom_fem}
+\end{figure}
+\par The graph displays three curves across the retirement income distribution. The blue line represents the observed difference in retirement income between the two groups at each quantile. It is highest at the very bottom of the distribution, nearing 0.9 at the 1st percentile, and gradually declines across quantiles, reaching near zero at the top. This suggests that the retirement income gap between the two groups is most pronounced at the lower end of the distribution and diminishes as one moves toward higher retirement income quantiles.
+
+\par The red line shows the portion of the gap that can be explained by observable characteristics, including education, age, race, and marital status. It closely follows the blue line across much of the distribution, indicating that a large share of the retirement income gap—particularly from the 10th to the 90th percentile—is attributable to compositional differences between the two groups. This implies that disparities in observed characteristics largely account for inequality in retirement income.
+
+\par The green line represents the unexplained component, reflecting differences in the returns to these characteristics, often interpreted as structural effects or discrimination. At the very bottom of the distribution, this component is strongly positive, suggesting that structural differences contribute significantly to the retirement income gap at low quantiles. However, the unexplained component turns negative and flattens beyond the 10th percentile, indicating that women without children may actually fare better—or at least not worse—at the upper end of the distribution once observable differences are accounted for.
+
+
+
+\par Bootstrapped inference further confirms the heterogeneity of the effects. Tests reject the null hypotheses of no effect and constant effect across quantiles, indicating that the retirement income gap is not uniform. The hypothesis of stochastic dominance for the observed and explained effects is supported, meaning the reference group consistently has higher retirement incomes across the distribution. However, stochastic dominance is not supported for the unexplained component, suggesting that structural effects vary more substantially and are not uniformly in favor of one group.
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Bootstrap Inference on Counterfactual Quantile Processes}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Null Hypothesis} & \textbf{KS p-value} & \textbf{CMS p-value} \\
+\midrule
+\multicolumn{3}{l}{\textit{Correct Specification}} \\
+Parametric model 0                         & 0      & 0 \\
+Parametric model 1                         & 0      & 0 \\
+\addlinespace
+\multicolumn{3}{l}{\textit{Observed Differences}} \\
+No effect: $QE(\tau) = 0$ for all $\tau$              & 0      & 0 \\
+Constant effect: $QE(\tau) = QE(0.5)$ for all $\tau$  & 0      & 0 \\
+Stochastic dominance: $QE(\tau) > 0$ for all $\tau$   & 0.84   & 0.84 \\
+Stochastic dominance: $QE(\tau) < 0$ for all $\tau$   & 0      & 0 \\
+\addlinespace
+\multicolumn{3}{l}{\textit{Explained Component (Characteristics)}} \\
+No effect: $QTE(\tau) = 0$ for all $\tau$             & 0      & 0 \\
+Constant effect: $QTE(\tau) = QTE(0.5)$ for all $\tau$& 0      & 0 \\
+Stochastic dominance: $QTE(\tau) > 0$ for all $\tau$  & 0.8    & 0.8 \\
+Stochastic dominance: $QTE(\tau) < 0$ for all $\tau$  & 0      & 0 \\
+\addlinespace
+\multicolumn{3}{l}{\textit{Unexplained Component (Coefficients)}} \\
+No effect: $QE(\tau) = 0$ for all $\tau$              & 0      & 0 \\
+Constant effect: $QE(\tau) = QE(0.5)$ for all $\tau$  & 0      & 0 \\
+Stochastic dominance: $QE(\tau) > 0$ for all $\tau$   & 0      & 0.1 \\
+Stochastic dominance: $QE(\tau) < 0$ for all $\tau$   & 0.48   & 0.74 \\
+\bottomrule
+\end{tabular}
+\label{tab:bootstrap_tests}
+\end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Effect of redistributing income.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\section*{Endogeneity Issues} 
+The literature has not solved the endogeneity of childlessness at the extensive margin. While instruments exist for the number of children conditional on having any (twins, sex composition), no convincing instrument for having any children versus none has been established. 
+\subsubsection*{Individual Fixed Effects Approach}
+
+
+
+We exploit the panel structure of RAND HRS (1992-present) to implement a correlated random effects quantile regression following \citet{arellano2016nonlinear}. By including individual-specific effects, we control for time-invariant unobserved heterogeneity:
+\begin{equation}
+Q_\tau(\ln \text{HH income}_{it}|X_{it}, \alpha_i) = \alpha_{i,\tau} + \widehat{\text{nokids}}_i + \gamma_{\tau} X_i + \epsilon_{i, \tau}
+\end{equation}
+where $\alpha_{i,\tau}$ captures individual-specific effects that may vary across quantiles.
+
+\par To better understand the mechanisms driving the heterogeneous relationship between childlessness and pension income, we employ the \citet{arellano2016nonlinear} quantile decomposition method. This approach enables us to separate the income gap into ``explained'' components (resulting from differences in observable characteristics) and ``unexplained'' components (attributable to differences in returns on those characteristics). The decomposition results reveal striking variation in both the magnitude and composition of the childlessness penalty across the income distribution (Figure \ref{fig:Decomposition_ife}, Table \ref{tab:coef_heterogeneity}). The total gap in log pension income between households with and without children ranges from $-0.318$ at the 10th percentile to $-0.082$ at the 90th percentile, confirming that the economic disadvantage of childlessness is concentrated among lower-income households.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{decomposition_stacked_bar.png}
+    \caption{Decomposition by quantile}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{decomposition_line_plot.png}
+    \caption{Gap components across quantiles}
+\end{subfigure}
+
+\vspace{0.5cm}
+
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{decomposition_percentage.png}
+    \caption{Relative contributions (\%)}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{decomposition_area_plot.png}
+    \caption{Cumulative decomposition}
+\end{subfigure}
+\caption{Arellano-Bonhomme (2016) Quantile Decomposition Analysis of Income Gap: Kids vs No Kids}
+\label{fig:Decomposition_ife}
+\end{figure}
+
+\par Perhaps most revealing is how the sources of this gap change across quantiles. At the bottom of the distribution (10th--25th percentiles), the unexplained component accounts for 82--83\% of the total gap. This dominance of structural effects suggests that low-income childless households face systematic disadvantages that cannot be attributed to differences in education, work experience, or other observable characteristics. These unexplained differences likely reflect:
+ exclusion from family-oriented social benefits and tax advantages (Child Tax Credit, EITC expansions);
+lack of access to informal family support networks that provide economic insurance;
+differential treatment in Social Security benefit calculations (no access to spousal or survivor benefits); and limited intergenerational wealth transfers and housing support.
+
+As we move up the income distribution, the pattern reverses dramatically. At the 75th--90th percentiles, observable characteristics explain 68--122\% of the gap, while the unexplained component actually becomes negative in some cases. This suggests that higher-income childless individuals may actually receive better returns to their characteristics than their counterparts with children---potentially reflecting career advantages from uninterrupted work histories and greater human capital investments.
+
+\par The analysis of coefficient heterogeneity (Figure \ref{fig:heterogeneity_ife}) provides additional insights. The returns to education differ markedly between groups and across quantiles. For instance, at the 90th percentile, having some college education yields a coefficient of 0.800 for those with children versus 0.740 for the childless. However, at lower quantiles, these patterns are less pronounced or even reversed, suggesting that education's protective effect against pension poverty operates differently depending on family structure.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{coefficient_heterogeneity_raracem_2_black_african_american.png}
+    \caption{Effect of race (Black/African American)}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{coefficient_heterogeneity_raracem_3_other.png}
+    \caption{Effect of race (Other)}
+\end{subfigure}
+
+\vspace{0.5cm}
+
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{coefficient_heterogeneity_raeduc_2_ged.png}
+    \caption{Effect of GED}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{coefficient_heterogeneity_raeduc_3_high_school_graduate.png}
+    \caption{Effect of high school graduation}
+\end{subfigure}
+\caption{Quantile-coefficient plots by sample}
+\label{fig:heterogeneity_ife}
+\end{figure}
+
+The use of individual fixed effects in the quantile treatment effect estimation strengthens our causal interpretation by controlling for time-invariant unobserved heterogeneity. This approach helps rule out selection effects---for instance, the possibility that individuals who choose not to have children differ in unobservable ways that also affect their pension outcomes.
+
+\begin{table}[h!]
+\centering
+\caption{Coefficient Heterogeneity Across Quantiles}
+\label{tab:coef_heterogeneity}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{6}{c}{Quantiles} \\
+\cmidrule{2-7}
+Variable & 0.10 & 0.25 & 0.50 & 0.75 & 0.90 & Sample \\
+\midrule
+\multicolumn{7}{l}{\textbf{Panel A: Effect of Number of Children}} \\
+Full Sample & $-0.013$ & $-0.018$ & $-0.020$ & $-0.024$ & $-0.025$ & All \\
+No Kids & $-0.019$ & $-0.024$ & $-0.025$ & $-0.028$ & $-0.029$ & No Kids \\
+Has Kids & $0.000$ & $0.000$ & $0.000$ & $0.000$ & $0.000$ & Has Kids \\
+\midrule
+\multicolumn{7}{l}{\textbf{Panel B: Effect of Education (GED)}} \\
+Full Sample & $0.220$ & $0.250$ & $0.290$ & $0.320$ & $0.330$ & All \\
+No Kids & $0.245$ & $0.260$ & $0.275$ & $0.325$ & $0.325$ & No Kids \\
+Has Kids & $0.225$ & $0.265$ & $0.290$ & $0.490$ & $0.500$ & Has Kids \\
+\midrule
+\multicolumn{7}{l}{\textbf{Panel C: Effect of Education (High School Graduate)}} \\
+Full Sample & $0.360$ & $0.380$ & $0.400$ & $0.430$ & $0.445$ & All \\
+No Kids & $0.365$ & $0.370$ & $0.400$ & $0.425$ & $0.450$ & No Kids \\
+Has Kids & $0.370$ & $0.390$ & $0.450$ & $0.530$ & $0.510$ & Has Kids \\
+\midrule
+\multicolumn{7}{l}{\textbf{Panel D: Effect of Education (Some College)}} \\
+Full Sample & $0.540$ & $0.590$ & $0.640$ & $0.710$ & $0.735$ & All \\
+No Kids & $0.535$ & $0.595$ & $0.650$ & $0.710$ & $0.740$ & No Kids \\
+Has Kids & $0.460$ & $0.540$ & $0.650$ & $0.765$ & $0.800$ & Has Kids \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: This table shows how the effects of key variables differ across quantiles and between groups with and without children. Values represent coefficients from quantile regression models estimated separately for each group.
+\end{tablenotes}
+\end{table}
+
+\par The decomposition results underscore that the childlessness pension gap is not a uniform phenomenon but rather reflects distinct mechanisms operating at different points in the income distribution. For low-income households, the prevalence of unexplained effects suggests the presence of structural barriers and systemic disadvantages. In this case, policy interventions should focus on extending social insurance protections to childless individuals; developing alternative support networks for aging childless adults; and reconsidering benefit formulas that implicitly penalize those without children
+
+
+For high-income households, the importance of explained effects and the negative unexplained component suggests that childlessness may actually confer advantages through enhanced career opportunities and human capital accumulation. Here, the policy focus might shift to ensuring these advantages don't exacerbate inequality.
+
+\par While the decomposition provides valuable insights, several caveats warrant mention. The negative unexplained components at higher quantiles, while statistically significant, require careful interpretation---they may reflect unmeasured career advantages or selection effects not captured by our fixed effects approach. Additionally, the wide confidence intervals at the distribution's extremes suggest some statistical uncertainty that should temper our conclusions about the very poorest and richest households.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ \subsubsection*{Use Timing of Fertility Decisions}
+
+To address endogeneity concerns arising from selection into childlessness, we initially attempted to exploit variation in the timing of fertility decisions. Following \citet{baudin2015fertility}, we recognize that early versus late fertility decisions likely reflect different selection mechanisms—with early motherhood potentially reflecting constraints and late motherhood reflecting career prioritization. However, the RAND HRS public use files do not include the fertility timing variables necessary for this identification strategy.  Given these constraints, we pivot to a more limited but robust analysis focusing on the binary distinction between childless individuals and parents, acknowledging that this approach cannot fully disentangle voluntary from involuntary childlessness or capture timing-based selection mechanisms.
+
+Table \ref{tab:fertility_actual} presents the actual distribution in our RAND HRS sample.
+
+\begin{table}[h!]
+\centering
+\caption{Distribution by Parental Status}
+\label{tab:fertility_actual}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Parental Status} & \textbf{N} & \textbf{Percent} \\
+\midrule
+Has children & 38,659 & 91.7\% \\
+Childless & 3,520 & 8.3\% \\
+Missing & 226 & 0.5\% \\
+\midrule
+Total & 42,405 & 100.0\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Sample from RAND HRS. The relatively low rate of childlessness (8.3\%) is consistent with the older cohorts in the HRS, born primarily between 1931-1959.
+\end{tablenotes}
+\end{table}
+
+\textbf{
+Heterogeneous Effects by Education.} To examine whether selection into childlessness varies by socioeconomic status—a key mechanism through which fertility timing would operate—we stratify our analysis by education level. This approach partially captures the voluntary/involuntary distinction, as highly educated women are more likely to have chosen childlessness for career reasons.
+
+Table \ref{tab:heterogeneous_actual} presents quantile regression results by education level.
+
+\begin{table}[h!]
+\centering
+\caption{Heterogeneous Effects of Childlessness by Education Level}
+\label{tab:heterogeneous_actual}
+\begin{tabular}{lccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{Panel A: Low Education ($<$ 14 years)}} \\
+\cmidrule{2-4}
+\textbf{Quantile} & \textbf{Coefficient} & \textbf{Std. Error} & \textbf{P-value} \\
+\midrule
+10th percentile & $-0.083$ & (0.043) & 0.052 \\
+50th percentile & $-0.014$ & (0.022) & 0.515 \\
+90th percentile & $0.028$ & (0.030) & 0.354 \\
+\midrule
+& \multicolumn{3}{c}{\textbf{Panel B: High Education ($\geq$ 14 years)}} \\
+\cmidrule{2-4}
+10th percentile & $-0.032$ & (0.076) & 0.676 \\
+50th percentile & $-0.022$ & (0.035) & 0.532 \\
+90th percentile & $0.013$ & (0.044) & 0.764 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: N = 33,975 for low education, N = 8,092 for high education. Dependent variable is log household income. Models control for current age, gender, and marital status. Robust standard errors in parentheses.
+\end{tablenotes}
+\end{table}
+
+The results reveal minimal heterogeneity by education level, with negative effects concentrated at lower quantiles for both groups. The interaction term between childlessness and high education in the pooled model is small and insignificant ($\beta = -0.015$, p = 0.696), suggesting that education does not substantially moderate the childlessness-income relationship in this older cohort.
+
+
+\textbf{Income Differences by Childlessness Status.} Table \ref{tab:summary_actual} presents summary statistics by childlessness status, revealing the selection patterns we cannot fully address without fertility timing data.
+
+\begin{table}[h!]
+\centering
+\caption{Summary Statistics by Childlessness Status}
+\label{tab:summary_actual}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Status} & \textbf{Mean Log Income} & \textbf{SD} & \textbf{Mean Age} & \textbf{\% Ever Married} \\
+\midrule
+Has children & 10.427 & 1.101 & 79.5 & 77.9\% \\
+Childless & 10.110 & 1.277 & 80.4 & 40.6\% \\
+Difference & 0.318*** & & -0.9** & 37.3*** \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Sample from RAND HRS restricted to those with non-missing income data. *** p$<$0.01, ** p$<$0.05
+\end{tablenotes}
+\end{table}
+
+
+\textbf{Quantile Regression Results.} Despite our inability to implement the full fertility timing identification strategy, quantile regression analysis reveals important distributional heterogeneity that partially addresses endogeneity concerns. Figure \ref{fig:quantile_endo} shows that childlessness penalties are concentrated among lower-income individuals, consistent with selection on unobservables being strongest at the bottom of the distribution.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{childlessness_quantile_effects.png}
+\caption{Childlessness Effect Across Income Distribution\\
+\small Notes: Quantile regression estimates with 95\% confidence intervals. All specifications include controls for age, gender, education, and marital status. The test for equality between Q10 and Q90 coefficients is rejected (p = 0.003).}
+\label{fig:quantile_endo}
+\end{figure}
+
+
+\textbf{Limitations and Robustness.} Our inability to implement the fertility timing identification strategy represents a significant limitation. Without data on age at first birth, we cannot distinguish between:
+\begin{itemize}
+    \item Women who chose childlessness for career reasons (likely positive selection)
+    \item Women who experienced involuntary childlessness (potentially negative selection)
+    \item Women who had children at different life stages (varying opportunity costs)
+\end{itemize}
+
+The simultaneous quantile regression results (Table \ref{tab:sqreg}) confirm that controlling for observables does not eliminate the distributional heterogeneity, suggesting that unobserved selection mechanisms vary across the income distribution.
+
+\begin{table}[h!]
+\centering
+\caption{Simultaneous Quantile Regression Results}
+\label{tab:sqreg}
+\begin{tabular}{lccccc}
+\toprule
+ & Q10 & Q25 & Q50 & Q75 & Q90 \\
+\midrule
+Childless & -0.090** & -0.041** & -0.025 & 0.014 & 0.019 \\
+ & (0.038) & (0.021) & (0.019) & (0.016) & (0.019) \\
+\midrule
+Controls & Yes & Yes & Yes & Yes & Yes \\
+N & 42,067 & 42,067 & 42,067 & 42,067 & 42,067 \\
+Pseudo R$^2$ & 0.172 & 0.242 & 0.279 & 0.278 & 0.255 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Bootstrap standard errors (100 replications) in parentheses. ** p$<$0.05
+\end{tablenotes}
+\end{table}
+
+
+\textbf{Partial Evidence on Selection Mechanisms} While we cannot fully implement the fertility timing strategy, our analysis provides suggestive evidence about selection patterns:
+
+\begin{enumerate}
+    \item \textbf{Marriage as a mediator}: The dramatic difference in marriage rates (40.6\% for childless vs. 77.9\% for parents) suggests that partnership formation is a key selection mechanism. When we control for marital status, the childlessness penalty drops from -37.6\% to -4.4\%.
+    
+    \item \textbf{Limited education gradient}: The absence of significant education interactions contradicts predictions of strong positive selection among educated childless women, possibly reflecting cohort effects in the HRS sample where voluntary childlessness among the educated was less common.
+    
+    \item \textbf{Distributional patterns}: The concentration of penalties at lower quantiles suggests that childlessness is most costly for those with limited economic resources, consistent with children serving as insurance in later life.
+\end{enumerate}
+
+In conclusion, while data limitations prevent us from fully exploiting fertility timing variation to address endogeneity, our analysis reveals important heterogeneity in the childlessness-income relationship that varies across the distribution and is largely mediated by marital status rather than education. Future research with detailed fertility histories from administrative data or enhanced survey instruments could better implement the timing-based identification strategy.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Spousal Analysis of Childlessness Effects on Household Pension Income}
+
+
+We exploit within‐couple variation to identify differential effects of childlessness by gender, controlling for partner characteristics as proxies for unobserved household heterogeneity. The specification includes own and spouse childlessness indicators:
+\begin{equation}
+Q_{\tau}\!\big(\ln Y_{it}\mid X_{it}\big)
+= \alpha_{\tau}
++ \beta^{\text{own}}_{\tau}\,\mathbf{1}\{\text{Childless}_{i}\}
++ \beta^{\text{spouse}}_{\tau}\,\mathbf{1}\{\text{Childless}_{\text{spouse},i}\}
++ \gamma_{\tau}^{\top} X_{it}
++ \varepsilon_{it},
+\end{equation}
+where $Y_{it}$ is household pension income and $X_{it}$ includes respondent and spouse characteristics (age, education, work history).
+
+main results
+\begin{table}[h]
+\centering
+\caption{Heterogeneous Effects of Childlessness Within Married Couples}
+\label{tab:spousal}
+\begin{threeparttable}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Female respondents} & \multicolumn{3}{c}{Male respondents} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+& $\tau=0.10$ & $\tau=0.50$ & $\tau=0.90$ & $\tau=0.10$ & $\tau=0.50$ & $\tau=0.90$ \\
+\midrule
+\multicolumn{7}{l}{Panel A: Own childlessness}\\
+$\beta^{\text{own}}_{\tau}$ & 0.078 & 0.044 & 0.064 & -0.163 & 0.004 & 0.002 \\
+& (0.086) & (0.046) & (0.084) & (0.107) & (0.042) & (0.060) \\
+\addlinespace
+\multicolumn{7}{l}{Panel B: Spouse childlessness}\\
+$\beta^{\text{spouse}}_{\tau}$ & -0.170$^{*}$ & 0.028 & 0.048 & 0.128 & 0.053 & 0.089 \\
+& (0.096) & (0.037) & (0.074) & (0.106) & (0.050) & (0.084) \\
+\midrule
+Controls & Yes & Yes & Yes & Yes & Yes & Yes \\
+Observations & 5{,}229 & 5{,}229 & 5{,}229 & 5{,}232 & 5{,}232 & 5{,}232 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Notes: Robust standard errors in parentheses. $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$. Controls include respondent and spouse age, education, and work status.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+
+\textbf{Instrumental Variables Analysis.} To address endogeneity, we instrument childlessness with pre‐marriage earnings, assuming they affect pension income only via fertility decisions and subsequent household formation.
+
+\begin{table}[h]
+\centering
+\caption{IV–Quantile Regression Using Pre‐Marriage Earnings}
+\label{tab:iv}
+\begin{threeparttable}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Women} & \multicolumn{3}{c}{Men} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Quantile & $\hat\beta_{IV}$ & SE & N & $\hat\beta_{IV}$ & SE & N \\
+\midrule
+$\tau=0.10$ & -10.598 & (16.294) & 99 & -4.261 & (2.806) & 96 \\
+$\tau=0.50$ & -9.275$^{**}$ & (4.000) & 99 & -2.422$^{**}$ & (1.133) & 96 \\
+$\tau=0.90$ & -16.139 & (10.792) & 99 & -0.849 & (1.137) & 96 \\
+\addlinespace
+\multicolumn{7}{l}{\textit{First-stage F-statistic}}\\
+Women & \multicolumn{3}{c}{F = 1.37} & \multicolumn{3}{c}{} \\
+Men & \multicolumn{3}{c}{} & \multicolumn{3}{c}{F = 4.50$^{***}$} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Notes: $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+
+The analysis yields three findings. First, gender asymmetry in own‐childlessness—male childlessness lowers income at the 10th percentile ($\hat\beta_{0.10}=-0.163$), while female effects are insignificant. 
+
+
+Second, cross‐spouse externalities—husband’s childlessness reduces wives’ income at $\tau=0.10$ ($\hat\beta^{\text{spouse}}_{0.10}=-0.170$, $p<0.10$); wife’s childlessness has no significant effect on husbands.
+
+Third, distributional heterogeneity—the null of constant effects across quantiles is rejected ($\chi^{2}=18.42$, $p<0.001$). These patterns align with insurance value of children and persistent gender specialization.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{spousal_cross_effects.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{spousal_own_effects_comparison.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
+
+
+\newpage
+\subsection*{Matching on Pre-Treatment Characteristics}
+%stata* Use coarsened exact matching (CEM) on pre-fertility characteristics
+%cem age_at_marriage education_youth parent_education childhood_ses, treatment(nokids)
+%* Match on entire pre-treatment work history sequences
+
+
+
+
+
+
+To address selection on observables before fertility decisions, we implement Coarsened Exact Matching (CEM). CEM forms strata by exact matching on coarsened versions of pre-treatment covariates and then reweights observations to equalize covariate distributions across treatment and control. We treat childlessness as the treatment (\(D_i=\mathbf{1}\{\text{no kids}\}\)) and match on characteristics determined prior to fertility: age at first marriage, schooling measured in youth, parental education, and childhood socio-economic status (SES). 
+
+A key feature of our design is matching on the entire pre-fertility work-history sequence. We discretize each respondent’s work history up to the fertility cutoff into a categorical sequence identifier (e.g., spells of full-time, part-time, unemployment, non-employment), and include this identifier as an exact-match stratum in CEM. This absorbs rich path dependence in labor-market trajectories prior to fertility choices. 
+
+Let \(\mathcal{S}\) denote the set of CEM strata. Within stratum \(s\in\mathcal{S}\), all treated and control units are identical on the coarsened covariates (including the work-history sequence). We assign CEM weights 
+\[
+w_i=\frac{n_s}{n_{sD_i}}\cdot\frac{N_{D_i}}{N}, 
+\]
+where \(n_s\) is stratum size, \(n_{sD_i}\) is the number in stratum \(s\) with treatment status \(D_i\), and \(N_{D_i}\) is the sample size in group \(D_i\). All main quantile regressions are estimated on the matched sample using these weights. We report the fraction matched, the multivariate \(L_1\) imbalance metric pre/post CEM, and standardized mean differences for each covariate (Appendix Table A.1). Results are robust to alternative coarsenings (e.g., finer marital-age bins and SES terciles) and to excluding the work-history sequence.
+
+
+
+
+
+
+Figure~\ref{fig:qr_main} summarizes CEM-weighted quantile regressions of log household pension income on an indicator for childlessness, controlling for age, sex, marital status, and education fixed effects. The effect is small and statistically indistinguishable from zero at the 10th and 25th percentiles, turns positive and economically meaningful at the median, and rises monotonically at the upper tail: \(\hat\beta_{\tau}\approx -0.021\) at the 10th, \(-0.004\) at the 25th, \(0.067\) at the 50th, \(0.135\) at the 75th, and \(0.172\) at the 90th quantile (all in log points). Age loads negatively throughout the distribution, while marriage is associated with substantially higher pension income. These estimates are obtained on the matched sample of 27{,}497 individuals aged \(65+\) (3{,}114 childless; 24{,}383 parents). 
+
+
+\textbf{Gender heterogeneity }Table~\ref{tab:gender} shows that the positive upper-tail gradient is concentrated among women. For females, the childlessness coefficient is \(0.112\) at the median and \(0.250\) at the 90th quantile (both \(p<0.01\)), while it is near zero for males at the median and modest at the 90th (\(0.036\), not statistically significant at conventional levels). At the 10th percentile, estimates are close to zero for women and slightly negative for men (marginal). 
+
+Overall, results are consistent with childlessness being associated with larger pension income only in the upper half of the distribution—particularly for women—suggesting that lifetime labor supply, occupation mix, or plan generosity may interact with family formation in ways that matter most at higher earnings histories.
+
+% ================================
+% Figure
+% ================================
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.9\linewidth]{main_quantile_plot.png}
+  \caption{Effect of childlessness on log pension income across the distribution (CEM-weighted quantile regressions). Shaded bands are 95\% CIs; covariates include age, sex, marital status, and education fixed effects.}
+  \label{fig:qr_main}
+\end{figure}
+
+% ================================
+% Main table
+% ================================
+\begin{table}[!t]
+\centering
+\begin{threeparttable}
+\caption{CEM-weighted quantile regressions of log pension income}
+\label{tab:main}
+\begin{tabular}{l S S S S S}
+\toprule
+ & {Q10} & {Q25} & {Q50} & {Q75} & {Q90} \\
+\midrule
+Childless (=1) 
+  & -0.021 & -0.004 & 0.067^{***} & 0.135^{***} & 0.172^{***} \\
+  & (0.022) & (0.023) & (0.021) & (0.029) & (0.039) \\
+Age (years)
+  & -0.008^{***} & -0.011^{***} & -0.015^{***} & -0.023^{***} & -0.021^{***} \\
+  & (0.001) & (0.001) & (0.001) & (0.001) & (0.002) \\
+Female
+  & -0.103^{***} & -0.110^{***} & -0.120^{***} & -0.145^{***} & -0.165^{***} \\
+  & (0.031) & (0.026) & (0.024) & (0.028) & (0.045) \\
+Married
+  & 0.746^{***} & 0.805^{***} & 0.843^{***} & 0.808^{***} & 0.785^{***} \\
+  & (0.029) & (0.026) & (0.025) & (0.029) & (0.045) \\
+\midrule
+Observations & 27497 & 27497 & 27497 & 27497 & 27497 \\
+Controls & \multicolumn{5}{c}{Education fixed effects} \\
+Weights & \multicolumn{5}{c}{CEM weights} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+   
+
+Notes: Dependent variable is \(\log(\)household pension income\()\). Robust standard errors in parentheses. \({}^{*} p<0.10\), \({}^{**} p<0.05\), \({}^{***} p<0.01\). 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+% ================================
+% Gender heterogeneity table
+% ================================
+\begin{table}[!t]
+\centering
+\begin{threeparttable}
+\caption{Heterogeneity by gender: childlessness coefficients at selected quantiles}
+\label{tab:gender}
+\begin{tabular}{l S S S S S S}
+\toprule
+ & {F:Q10} & {F:Q50} & {F:Q90} & {M:Q10} & {M:Q50} & {M:Q90} \\
+\midrule
+Childless (=1)
+  & -0.003 & 0.112^{***} & 0.250^{***} & -0.074^{*} & 0.002 & 0.036 \\
+  & (0.025) & (0.027) & (0.050) & (0.039) & (0.038) & (0.064) \\
+Observations
+  & 15472 & 15472 & 15472 & 12025 & 12025 & 12025 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+Notes: Each cell is the coefficient on the childlessness indicator from a CEM-weighted quantile regression with covariates (age, marital status, and education fixed effects), estimated separately by gender. Robust standard errors in parentheses. \({}^{*} p<0.10\), \({}^{**} p<0.05\), \({}^{***} p<0.01\). 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\newpage
+
+
+
+
+
+
+
+\subsection*{Sensitivity to Selection on Unobservables}
+
+To assess the robustness of our estimates to potential omitted variable bias, we implement two complementary approaches: the selection ratio method of \citet{altonji2005selection} and the coefficient stability bounds developed by \citet{oster2019unobservable}. These methods formalize the intuition that if the relationship between childlessness and household income is stable across specifications with increasing sets of controls, the estimated effect is less likely to be driven by unobserved confounders.
+
+
+
+\textbf{Baseline Results and Selection Ratio.} Table~\ref{tab:selection} presents the progression of coefficient estimates as we sequentially add control variables. The uncontrolled regression yields a negative association between childlessness and log household income ($\beta = -0.142$, $p < 0.001$), suggesting that childless individuals have approximately 14\% lower income on average. However, this relationship strengthens in magnitude when we add basic demographic controls (age and gender), reaching $\beta = -0.182$.
+
+\begin{table}[htbp]
+\centering
+\caption{Progression of Estimates: Selection on Observables Analysis}
+\label{tab:selection}
+\begin{tabular}{lcccc}
+\hline\hline
+Specification & $\beta_{nokids}$ & Std. Error & R-squared & N \\
+\hline
+Uncontrolled & $-0.142$*** & (0.020) & 0.001 & 41,842 \\
++ Age, Gender & $-0.182$*** & (0.019) & 0.095 & 41,841 \\
++ Education, Marriage & $-0.061$*** & (0.016) & 0.362 & 41,821 \\
++ Work History & $-0.022$ & (0.015) & 0.447 & 41,821 \\
+\hline
+\multicolumn{5}{l}{\footnotesize Notes: Dependent variable is log household income. Sample restricted to} \\
+\multicolumn{5}{l}{\footnotesize individuals aged 50+. Robust standard errors in parentheses.} \\
+\multicolumn{5}{l}{\footnotesize *** $p<0.01$, ** $p<0.05$, * $p<0.1$} \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+The most striking pattern emerges when we add socioeconomic controls. Including education and marital status reduces the coefficient by 70\% (to $\beta = -0.061$), and adding work history reduces it further to $\beta = -0.022$ (statistically insignificant). This dramatic attenuation suggests that the raw association between childlessness and income is largely explained by differences in human capital accumulation and labor force attachment.
+
+Following \cite{altonji2005selection}, we calculate the ratio of selection on unobservables to selection on observables that would be required to eliminate the estimated effect entirely. Using our most comprehensive specification, this ratio equals 1.0, indicating that selection on unobservables would need to be approximately equal in magnitude to selection on observables to fully explain away the relationship. This suggests moderate robustness to omitted variable bias, though not overwhelming evidence of a causal effect.
+
+
+\textbf{Oster Bounds.} Figure~\ref{fig:stability} presents the coefficient stability plot, which visualizes how the estimated effect evolves as explanatory power (R-squared) increases. The plot reveals a clear pattern: as we add controls that explain more variation in income, the coefficient on childlessness monotonically approaches zero. The trajectory suggests that with a sufficiently rich set of controls, the effect would likely be eliminated entirely.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{coefficient_stability.png}
+\caption{Coefficient Stability and Oster Bounds}
+\label{fig:stability}
+\begin{minipage}{0.9\textwidth}
+\footnotesize
+\textit{Notes:} This figure plots the estimated coefficient on childlessness against the R-squared from specifications with progressively richer sets of controls. Navy circles represent observed estimates. The red X indicates the Oster bound under the assumption that selection on unobservables equals selection on observables ($\delta = 1$) and $R_{max} = 1.3 \times R^2_{controlled}$. The horizontal dashed line indicates zero effect.
+\end{minipage}
+\end{figure}
+
+To formalize this intuition, we implement the bounding approach of \cite{oster2019unobservable}, which extends the Altonji et al. framework by explicitly modeling the maximum achievable R-squared ($R_{max}$) and allowing for varying degrees of selection ($\delta$). Following Oster's recommendation, we set $R_{max} = 1.3 \times R^2_{controlled}$, yielding $R_{max} = 0.58$ based on our most comprehensive specification with $R^2 = 0.447$.
+
+Table~\ref{tab:oster} presents the identified sets under different assumptions about the relative importance of selection on unobservables versus observables.
+
+\begin{table}[htbp]
+\centering
+\caption{Oster Bounds Under Alternative Assumptions}
+\label{tab:oster}
+\begin{tabular}{lccc}
+\hline\hline
+$R_{max}$ Assumption & $\delta$ & Lower Bound & Controlled Estimate \\
+\hline
+$1.0 \times R^2_{controlled}$ & 1.0 & $-0.022$ & $-0.022$ \\
+$1.1 \times R^2_{controlled}$ & 1.0 & $-0.010$ & $-0.022$ \\
+$1.2 \times R^2_{controlled}$ & 1.0 & $0.002$ & $-0.022$ \\
+$1.3 \times R^2_{controlled}$ & 1.0 & $0.014$ & $-0.022$ \\
+$1.5 \times R^2_{controlled}$ & 1.0 & $0.038$ & $-0.022$ \\
+$2.0 \times R^2_{controlled}$ & 1.0 & $0.098$ & $-0.022$ \\
+\hline
+\multicolumn{4}{l}{\footnotesize Notes: $R^2_{controlled} = 0.447$ from specification including age, gender,} \\
+\multicolumn{4}{l}{\footnotesize education, marital status, and work history. $\delta = 1$ assumes equal} \\
+\multicolumn{4}{l}{\footnotesize selection on observables and unobservables.} \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+Under Oster's benchmark assumption ($R_{max} = 1.3 \times R^2_{controlled}$, $\delta = 1$), the identified set is $[0.014, -0.022]$, which includes zero. This suggests that the estimated negative association between childlessness and income could plausibly be eliminated by unobserved confounders of similar importance to the observed controls. More conservative assumptions about $R_{max}$ strengthen this conclusion: for $R_{max} = 1.2 \times R^2_{controlled}$, the lower bound is already positive at $0.002$.
+
+The sensitivity of our estimates to these assumptions reflects the large role played by observed socioeconomic characteristics—particularly education, marital status, and work history—in explaining both childlessness and income. The progression from $R^2 = 0.001$ in the uncontrolled specification to $R^2 = 0.447$ in the full specification demonstrates that these observables are highly predictive. Consequently, unobservables of similar predictive power could substantially affect our estimates.
+
+
+\textbf{Heterogeneity Across the Income Distribution.} To investigate whether selection concerns vary across the income distribution, we implement quantile regression versions of both the uncontrolled and controlled specifications. Table~\ref{tab:quantile} presents selection ratios at different quantiles of the log income distribution.
+
+\begin{table}[htbp]
+\centering
+\caption{Selection Analysis by Income Quantile}
+\label{tab:quantile}
+\begin{tabular}{lcccc}
+\hline\hline
+Quantile & Uncontrolled & Controlled & Selection Ratio & Interpretation \\
+\hline
+10th & $-0.304$*** & $-0.058$* & 0.24 & More robust \\
+25th & $-0.201$*** & $-0.005$ & 0.02 & Less robust \\
+50th & $-0.108$*** & $-0.022$ & 0.26 & Moderate \\
+75th & $-0.086$*** & $-0.021$ & 0.33 & Moderate \\
+90th & $-0.012$ & $-0.006$ & 1.08 & Least robust \\
+\hline
+\multicolumn{5}{l}{\footnotesize Notes: Controlled specification includes age, gender, education, marital status,} \\
+\multicolumn{5}{l}{\footnotesize and work history. Selection ratio indicates how much larger selection on} \\
+\multicolumn{5}{l}{\footnotesize unobservables must be relative to observables to eliminate the effect.} \\
+\multicolumn{5}{l}{\footnotesize *** $p<0.01$, ** $p<0.05$, * $p<0.1$} \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+The results reveal substantial heterogeneity. At the bottom of the income distribution (10th percentile), childless individuals have 30\% lower income in the uncontrolled specification, which attenuates to just 6\% when controls are added—a selection ratio of 0.24. This suggests relatively greater robustness to omitted variable bias at the lower tail. In contrast, at the 90th percentile, the uncontrolled effect is small and statistically insignificant ($-0.012$), and remains near zero with controls, yielding a selection ratio of 1.08. This indicates that any effect at the top of the distribution is highly sensitive to specification choices and likely reflects remaining confounding.
+
+\textbf{Interpretation and Implications.} Our selection analysis yields three key conclusions. First, the observed negative association between childlessness and household income is not robust to the addition of standard socioeconomic controls. The coefficient attenuates by 85\% when we account for education, marital status, and work history, and becomes statistically indistinguishable from zero.
+
+Second, under reasonable assumptions about the relative importance of unobserved versus observed confounders, we cannot rule out that the true effect is zero or even positive. The Oster bounds include zero under the benchmark specification, and turn positive under modest variations in assumptions about $R_{max}$.
+
+Third, this lack of robustness is most pronounced at the top of the income distribution, where any apparent childlessness penalty is essentially eliminated by controls. At the bottom of the distribution, there remains a small negative association even after controlling for observables, though the selection ratios suggest this too could plausibly reflect remaining confounding.
+
+These findings underscore the importance of rich controls when estimating the economic correlates of fertility decisions. The naive association between childlessness and income is almost entirely explained by differences in human capital, marital status, and labor force attachment—factors that are themselves endogenous to fertility choices. Credible causal inference in this domain requires either experimental variation or compelling identification strategies that go beyond standard covariate adjustment.
+
+
+
+\section*{Disscusion}
+\par In the U.S. context, several specific structural factors help explain why childless women at the lower end of the income distribution face pension disadvantages. The Social Security benefit calculation design contains features that can disadvantage childless women. Without qualifying for spousal benefits or survivor benefits that many mothers eventually receive, low-income childless women must rely solely on their own earnings records. 
+\par  The U.S. tax code provides numerous incentives for families with children, including the Child Tax Credit, Earned Income Tax Credit expansions for families, and dependent care credits that aren't available to childless individuals. Over a lifetime, these foregone tax advantages represent significant resources that could otherwise have supplemented retirement savings.
+\par  Low-wage sectors in the U.S. that employ many women, such as service industries, retail, and care work, often lack employer-sponsored retirement plans. Without the career interruptions that typically push mothers into more flexible but lower-paying work, childless women might remain longer in these pension-poor sectors without transitioning to better-covered employment.
+\par  Low-income childless elderly in the U.S. face particular challenges with long-term care costs. While Medicaid provides nursing home coverage, the eligibility criteria and spend-down requirements can be especially challenging for those without children to help navigate the system or provide unpaid care that might delay institutional placement. Without children who might provide housing support or co-residence options, low-income childless women may face higher housing costs in retirement. The U.S. has limited affordable housing options for seniors, and those without family networks often spend disproportionately more of their limited pension income on housing.
+\par  In the U.S. context, where the social safety net has significant gaps, informal financial transfers within families are an important economic resource. Studies using HRS data (CITE) have shown that older Americans without children receive significantly less informal financial support than their counterparts with children, creating a structural disadvantage at lower income levels where such transfers represent a higher proportion of total resources.
+\par  These structural factors operate within the particular institutional framework of the U.S. retirement system, which relies heavily on a combination of Social Security, employer-provided benefits, and individual savings. This system creates specific vulnerabilities for low-income childless women that differ from those in countries with more universalistic pension systems.
+\section*{Conclusion}
+\par This study has revealed a nuanced and heterogeneous relationship between childlessness and retirement income that challenges conventional understandings of the economic consequences of fertility decisions. Rather than observing a uniform effect across the income distribution, we find that the relationship between childlessness and pension income varies substantially by income level and gender.
+At the lower end of the income distribution, childlessness is associated with significantly reduced household pension incomes, particularly for women. This "childlessness penalty" at lower income levels suggests that having children may provide economic benefits for lower-income households through various mechanisms, potentially including family support networks, targeted welfare benefits, or different lifetime savings patterns.
+\par  Strikingly, this relationship systematically reverses in the middle and upper income brackets. For middle-income women, childlessness is associated with modestly higher pension incomes, while at the highest income levels, the childlessness premium becomes more pronounced. The decomposition analysis reveals that these differences are largely explained by observable characteristics, though structural factors play a significant role at the lower end of the distribution.
+\par These findings have important implications for both research and policy. First, they suggest that studies examining only average effects may miss crucial heterogeneity across the income distribution. Second, they indicate that family structure interacts with economic outcomes in fundamentally different ways depending on household resources, gender, and socioeconomic status. Finally, they suggest that pension policy interventions should be carefully designed to address the specific vulnerabilities of different population segments, particularly childless individuals in lower-income brackets who appear most economically disadvantaged in retirement.
+\par  Future research should further explore the mechanisms driving these patterns, particularly the factors that lead to better economic outcomes for childless women at higher income levels and worse outcomes at lower income levels. Additional work examining cross-country variations in these relationships could help identify how institutional factors and welfare systems mediate the link between fertility decisions and retirement security.
+
+\newpage
+%\startbibliography
+%\begin{doublespace} % Bibliography must be single spaced
+		\printbibliography
+ % Prints the bibliography
+%\end{doublespace}
+% \bibliographystyle{authordate1}
+% \bibliography{doc2.bib}
+% 
+	\end{document}

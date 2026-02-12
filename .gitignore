@@ -1,0 +1,50 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+
+# Data files (too large for git)
+*.dat
+*.dat.gz
+*.dta
+*.sav
+*.csv
+data/harmonized_data/*.csv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Compressed
+*.zip

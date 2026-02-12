@@ -1,0 +1,277 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subcaption,placeins}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=blue,
+    linkcolor=blue
+}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+
+\usepackage[bibstyle=numeric, citestyle=authoryear, doi=false, url=true, backend=biber, maxbibnames=10, maxcitenames=4, uniquelist=false, uniquename=false, sorting=nyt]{biblatex}
+\addbibresource{laborrefs.bib}
+
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+
+\title{The Motherhood Penalty on Retirement Income: Evidence from a Lifecycle Analysis}
+
+\author{
+    Afrouz Azadikhah Jahromi\thanks{School of Business Administration, Widener University. Email: ajahromi@widener.edu}
+    \and
+    Weige Huang\thanks{Corresponding author.}
+}
+
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+\noindent This study examines how having children affects women's income across the lifecycle, with particular focus on retirement outcomes. Using data from the National Longitudinal Survey of Youth 1979 (NLSY79), the Health and Retirement Study (HRS), and the Current Population Survey (CPS) for women born 1957--1964, we document the evolution of the motherhood penalty from early career through retirement. We find that the motherhood penalty peaks at ages 35--40 (+27.4\%) when children are young and costly, then diminishes through the 40s. Critically, we document that this penalty persists and amplifies into retirement: mothers receive 32.8\% less pension income than childless women at ages 54--61. However, when measuring household income, this penalty appears to reverse because mothers are more likely to be married. Our findings highlight the importance of using individual income measures and distinguish between career earnings and retirement wealth accumulation when evaluating the long-term economic consequences of motherhood.
+
+\bigskip
+\noindent \textbf{JEL Classification:} J13, J16, J26, J31
+
+\noindent \textbf{Keywords:} Motherhood penalty, retirement income, pension gap, lifecycle analysis, fertility
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+The economic consequences of motherhood have been extensively documented in the labor economics literature. Women with children earn less than childless women---a phenomenon known as the ``motherhood penalty.'' While numerous studies have examined this penalty during working years, relatively little is known about how it evolves into retirement. This paper addresses this gap by documenting the lifecycle trajectory of the motherhood penalty from early career through retirement.
+
+Understanding the retirement implications of motherhood is increasingly important for several reasons. First, as women's labor force participation has increased, their pension and Social Security benefits have become more dependent on their own earnings histories rather than solely on spousal benefits. Second, the baby boomer generation---with historically high fertility rates---is now entering retirement, making this cohort particularly relevant for understanding motherhood-retirement linkages. Third, pension income depends on cumulative career earnings and tenure, meaning that early-career motherhood penalties may compound over time.
+
+We make three main contributions. First, we document the complete lifecycle trajectory of the motherhood penalty using three complementary data sources: the NLSY79 (ages 15--61), CPS ASEC (ages 35--50), and HRS (ages 50--67). This approach allows us to fill critical data gaps that would exist using any single dataset. Second, we show that the motherhood penalty on \textit{individual} pension income is substantial (32.8\%) and persists into retirement, even as household income measures suggest a reversal. Third, we highlight important methodological considerations for researchers studying motherhood and retirement, particularly regarding the measurement of fertility and income.
+
+Our main finding is that the motherhood penalty follows a distinctive lifecycle pattern. It emerges in early career (+4--8\% at ages 20--30), peaks in the late 30s (+27.4\% at ages 35--40), diminishes through the 40s, and then reappears in pension income at retirement (+32.8\%). The apparent reversal in household income at older ages is driven by composition effects: mothers are more likely to be married and thus have two-earner households.
+
+\section{Related Literature}
+
+The motherhood penalty literature has documented wage gaps between mothers and childless women ranging from 5\% to 15\% per child \parencite{waldfogel1997effect, budig2001wage}. These penalties have been attributed to reduced human capital accumulation, employer discrimination, and differential work effort \parencite{anderson2003motherhood}.
+
+Recent work has emphasized heterogeneity in the motherhood penalty across the income distribution. \textcite{kleven2019children} document that the penalty is concentrated among lower-income women and has evolved over time. Quantile regression approaches have revealed that the penalty varies substantially across different points of the earnings distribution.
+
+Less attention has been paid to retirement outcomes. \textcite{even1994gender} examined gender differences in pension coverage, while \textcite{johnson2004women} documented lower retirement wealth among women. However, few studies have explicitly linked motherhood to retirement income while accounting for lifecycle dynamics.
+
+Our contribution is to trace the motherhood penalty from early career through retirement using a consistent birth cohort, allowing us to understand how early-career penalties translate into retirement income differences.
+
+\section{Data}
+
+We use three complementary datasets to construct a lifecycle picture of the motherhood penalty for women born 1957--1964 (baby boomers).
+
+\subsection{NLSY79}
+
+The National Longitudinal Survey of Youth 1979 follows a nationally representative sample of 12,686 individuals (6,283 women) who were ages 14--22 in 1979. We observe them through 2018, when they are ages 54--61. Key variables include:
+
+\begin{itemize}
+    \item \textbf{Fertility:} NUMKID (total children ever born)---the gold standard measure
+    \item \textbf{Income:} TNFI (Total Net Family Income) through 1993
+    \item \textbf{Retirement income:} Pension income, IRA savings, Social Security (2018 wave)
+\end{itemize}
+
+In our sample, 78.7\% of women are mothers (N=4,946) and 21.3\% are childless (N=1,337).
+
+\subsection{CPS ASEC}
+
+The Current Population Survey Annual Social and Economic Supplement provides large cross-sectional samples for years 1990--2025. We use individual income (INCTOT) and identify the 1957--1964 birth cohort at ages 35--50, filling a critical gap where neither NLSY79 income data nor HRS coverage is adequate.
+
+The CPS provides substantially larger samples of childless women (N=46,680 at ages 35--50) compared to other sources.
+
+\subsection{RAND HRS}
+
+The Health and Retirement Study tracks individuals aged 50+ from 1992--2022. For the 1957--1964 birth cohort, we observe women at ages 58--67 by 2022. Key variables include:
+
+\begin{itemize}
+    \item \textbf{Income:} H\#ITOT (total household income)
+    \item \textbf{Fertility:} Maximum children across waves
+\end{itemize}
+
+An important limitation is that HRS measures \textit{household} income, which includes spouse earnings. This complicates interpretation of motherhood effects.
+
+\subsection{Data Challenges}
+
+Table \ref{tab:sample_sizes} summarizes sample sizes by age group and data source. A critical gap exists at ages 35--45 where NLSY79 income data ends (around age 33 in 1993) and HRS childless samples are extremely small (N=1 at ages 35--40, N=14 at ages 40--45).
+
+\begin{table}[htbp]
+\centering
+\caption{Sample Sizes by Age Group and Data Source}
+\label{tab:sample_sizes}
+\begin{tabular}{llrrr}
+\toprule
+Age Group & Source & N Mothers & N Childless & Data Quality \\
+\midrule
+20--25 & NLSY79 & 19,221 & 5,091 & Good \\
+25--30 & NLSY79 & 14,724 & 3,229 & Good \\
+30--35 & NLSY79 & 13,269 & 2,515 & Good \\
+35--40 & CPS & 37,425 & 10,340 & Good \\
+40--45 & CPS & 48,811 & 13,265 & Good \\
+45--50 & CPS & 41,976 & 18,616 & Good \\
+50--55 & HRS & 4,579 & 408 & Good \\
+55--60 & HRS & 6,441 & 648 & Good \\
+60--65 & HRS & 3,227 & 329 & Good \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Methodology}
+
+We employ a Changes-in-Changes (CIC) framework following \textcite{athey2006identification} to estimate the distributional effects of motherhood on income. The key assumptions are:
+
+\begin{enumerate}
+    \item \textbf{Time invariance in distribution:} The distribution of unobserved characteristics is stable over time within groups
+    \item \textbf{Rank invariance:} Individuals maintain their relative position in the income distribution
+\end{enumerate}
+
+For each age group $a$, we estimate the motherhood penalty as:
+\begin{equation}
+    \text{Penalty}_a = \frac{\bar{Y}_{a,\text{childless}} - \bar{Y}_{a,\text{mother}}}{\bar{Y}_{a,\text{childless}}} \times 100
+\end{equation}
+
+where $\bar{Y}$ denotes mean income. A positive penalty indicates mothers earn less than childless women.
+
+\section{Results}
+
+\subsection{Lifecycle Pattern of the Motherhood Penalty}
+
+Table \ref{tab:lifecycle} presents our main results on the lifecycle evolution of the motherhood penalty.
+
+\begin{table}[htbp]
+\centering
+\caption{Motherhood Penalty Across the Lifecycle}
+\label{tab:lifecycle}
+\begin{tabular}{lcrrl}
+\toprule
+Age Group & Source & Penalty (\%) & N Childless & Income Type \\
+\midrule
+20--25 & NLSY79 & +7.6 & 5,091 & Individual \\
+25--30 & NLSY79 & +4.2 & 3,229 & Individual \\
+30--35 & NLSY79 & $-$6.5 & 2,515 & Individual \\
+\textbf{35--40} & \textbf{CPS} & \textbf{+27.4} & \textbf{10,340} & \textbf{Individual} \\
+40--45 & CPS & +11.1 & 13,265 & Individual \\
+45--50 & CPS & $-$1.2 & 18,616 & Individual \\
+50--55 & HRS & $-$21.5 & 408 & Household \\
+55--60 & HRS & $-$20.0 & 648 & Household \\
+60--65 & HRS & $-$32.6 & 329 & Household \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Several patterns emerge. First, there is a clear early-career penalty of 4--8\% at ages 20--30. Second, the penalty \textit{peaks} at ages 35--40, reaching 27.4\%---the period when children are young and require intensive care. Third, the penalty diminishes through the 40s as children become more independent. Fourth, the negative penalties at ages 50+ (mothers appearing to earn more) are driven by HRS measuring \textit{household} rather than individual income.
+
+\subsection{Retirement Income Outcomes}
+
+Table \ref{tab:retirement} presents pension and retirement savings outcomes from NLSY79, which measures \textit{individual} retirement income.
+
+\begin{table}[htbp]
+\centering
+\caption{Motherhood Penalty on Retirement Income (NLSY79, Ages 54--61)}
+\label{tab:retirement}
+\begin{tabular}{lrrr}
+\toprule
+Income Source & Mothers & Childless & Penalty (\%) \\
+\midrule
+Pension Income & \$19,743 & \$29,379 & \textbf{+32.8} \\
+IRA Savings & \$175,730 & \$177,964 & +1.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pension income penalty of 32.8\% is striking. Pensions depend on career earnings and years of service, meaning they capture the cumulative effect of motherhood on labor market outcomes. In contrast, IRA savings show minimal differences, potentially because of spousal IRA contributions, catch-up contributions after children leave home, and inheritance.
+
+\subsection{Why Household Income Shows a ``Bonus''}
+
+The apparent reversal in HRS household income (mothers earning 20--33\% \textit{more}) does not indicate that the motherhood penalty has reversed. Rather, it reflects:
+
+\begin{enumerate}
+    \item \textbf{Marriage patterns:} Mothers are more likely to be married, resulting in two-earner households
+    \item \textbf{Income measurement:} HRS measures household income including spouse earnings
+    \item \textbf{Selection:} Childless women at ages 58--67 may be negatively selected
+\end{enumerate}
+
+When we examine \textit{individual} pension income from NLSY79 at similar ages (54--61), we find the opposite pattern: a 32.8\% penalty for mothers.
+
+\section{Discussion}
+
+Our findings have several important implications.
+
+\subsection{Policy Implications}
+
+The substantial pension income penalty (32.8\%) suggests that current pension systems may inadequately protect women who have career interruptions for childcare. Policy options include:
+
+\begin{itemize}
+    \item Caregiver credits in pension calculations
+    \item Minimum pension guarantees
+    \item Enhanced Social Security credits for caregiving years
+\end{itemize}
+
+The minimal IRA gap suggests that private savings vehicles may help equalize retirement outcomes, possibly through spousal contributions and catch-up provisions.
+
+\subsection{Methodological Implications}
+
+Our analysis highlights two critical measurement issues:
+
+\begin{enumerate}
+    \item \textbf{Fertility measurement:} Researchers should use ``children ever born'' rather than ``children in household,'' which undercounts mothers at older ages when children have left home
+    \item \textbf{Income measurement:} Individual income measures are essential for identifying motherhood penalties; household income confounds maternal earnings with spousal income
+\end{enumerate}
+
+\section{Conclusion}
+
+This study documents the complete lifecycle trajectory of the motherhood penalty from early career through retirement. We find that the penalty peaks in the late 30s and persists into retirement, with mothers receiving 32.8\% less pension income than childless women. However, household income measures mask this penalty because mothers are more likely to be married.
+
+Our findings underscore the importance of using individual income measures when studying the economic consequences of motherhood and highlight the cumulative nature of early-career penalties in determining retirement outcomes.
+
+\newpage
+\printbibliography
+
+\newpage
+\appendix
+
+\section{Figures}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/lifecycle_penalty_with_gap.png}
+    \caption{Motherhood Penalty Across the Lifecycle}
+    \label{fig:lifecycle}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/income_distribution_motherhood.png}
+    \caption{Income Distribution by Motherhood Status}
+    \label{fig:income_dist}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/motherhood_penalty_by_race.png}
+    \caption{Motherhood Penalty by Race}
+    \label{fig:by_race}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/quantile_regression_plot.png}
+    \caption{Quantile Treatment Effects of Motherhood}
+    \label{fig:quantile}
+\end{figure}
+
+\end{document}
