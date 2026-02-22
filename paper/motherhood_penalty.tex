@@ -1071,6 +1071,67 @@ Widowed + Less than HS + 3--4 children & 39 & \$16,000 \\
 
 \textbf{Policy implications.} These findings argue strongly against universal motherhood pension credits. Married, college-educated mothers with 1--2 children---who represent approximately 22\% of mothers---have \textit{higher} income than childless women and require no additional support. Meanwhile, the 9\% of mothers in the ``very high'' vulnerability category face severe retirement insecurity that motherhood credits alone cannot address---their vulnerability stems from the \textit{combination} of marital dissolution, limited education, and large families, not motherhood per se. Effective policy would target the interaction of these characteristics, prioritizing divorced and widowed mothers with limited education, rather than providing universal benefits that disproportionately flow to those who need them least.
 
+\subsection{Social Security Benefits: A Partial Buffer}
+
+While private pensions show substantial motherhood penalties, Social Security provides a partial buffer due to its progressive benefit formula. We examine Social Security retirement income separately to assess how this foundational component of retirement security varies by motherhood status.
+
+Table \ref{tab:ss_benefits} presents Social Security benefits by motherhood status and number of children. Among women receiving SS benefits, mothers receive \$12,249 annually compared to \$13,330 for childless women---an 8.1\% gap that is notably smaller than the 15--25\% gaps observed in private pension income. This attenuation reflects Social Security's progressive formula, which replaces a higher percentage of earnings for lower earners, partially compensating for mothers' lower lifetime earnings.
+
+\begin{table}[htbp]
+\centering
+\caption{Social Security Benefits by Motherhood Status (HRS, Women Ages 50--65)}
+\label{tab:ss_benefits}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+Group & N Receiving & Mean SS Benefit & Median SS Benefit & Gap vs. Childless \\
+\midrule
+Childless & 47 & \$13,330 & \$12,144 & --- \\
+1 child & 58 & \$11,745 & \$10,050 & +11.9\% \\
+2 children & 142 & \$11,600 & \$11,033 & +13.0\% \\
+3--4 children & 230 & \$12,332 & \$10,968 & +7.5\% \\
+5+ children & 147 & \$12,946 & \$10,800 & +2.9\% \\
+\midrule
+All mothers & 577 & \$12,249 & \$10,800 & +8.1\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Sample includes women born 1957--1964 receiving Social Security retirement benefits. The SS motherhood gap (8.1\%) is substantially smaller than private pension gaps (15--25\%), reflecting SS's progressive formula. Interestingly, the gap is non-monotonic in number of children, with 1--2 children showing the largest gaps and 5+ children showing smaller gaps. This may reflect selection: women with many children who nonetheless receive SS likely maintained stronger labor force attachment than typical large-family mothers.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Critically, despite receiving lower absolute benefits, mothers are \textit{more reliant} on Social Security than childless women. SS comprises 46.5\% of household income for mothers compared to 42.8\% for childless women. This differential reliance is most pronounced at lower income levels: among the lowest quintile, mothers derive 78.7\% of income from SS compared to 71.0\% for childless women.
+
+Table \ref{tab:ss_marital} examines SS gaps by marital status, revealing heterogeneity connected to spousal and survivor benefits. Married mothers show only a 4.2\% SS gap (partly offset by spousal benefit eligibility), while divorced mothers show a 9.8\% gap and widowed mothers show a substantial 24.2\% gap. The widowed gap may reflect that childless widows are more likely to receive survivor benefits based on a husband's stronger earnings record, while widowed mothers may have had husbands with weaker earnings histories due to assortative mating on family orientation.
+
+\begin{table}[htbp]
+\centering
+\caption{Social Security Gap by Marital Status (HRS, Women Ages 50--65)}
+\label{tab:ss_marital}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+Marital Status & Mothers Mean SS & Childless Mean SS & Gap \\
+\midrule
+Married/Partnered & \$11,976 & \$12,499 & +4.2\% \\
+Divorced/Separated & \$11,320 & \$12,547 & +9.8\% \\
+Widowed & \$14,534 & \$19,177 & +24.2\% \\
+Never Married & \$11,406 & \$12,423 & +8.2\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: SS gap is calculated as (childless mean $-$ mothers mean) / childless mean. The small gap for married women reflects spousal benefit eligibility. The large gap for widowed women may reflect survivor benefit dynamics and assortative mating patterns.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The combination of lower SS benefits and higher SS reliance creates particular vulnerability for low-income mothers. Among divorced/separated mothers with less than high school education, SS comprises 60.9\% of income; among never-married mothers with less than high school, it comprises 64.3\%. For comparison, married mothers with college degrees derive only 22.8\% of income from SS. This gradient reinforces the targeting implications identified in Section 5.12: vulnerable mothers are not only poorer but are more dependent on a benefit system in which they receive less.
+
+\textbf{Policy implications.} The smaller SS motherhood gap (8.1\% vs. 15--25\% in private pensions) suggests that SS's progressive formula provides meaningful, if incomplete, protection. However, the greater reliance on SS among mothers---particularly vulnerable mothers---means that any erosion of SS benefits would disproportionately harm this population. Policy options include: (1) enhanced SS credits for caregiving years, which would directly address the gap at its source; (2) strengthened minimum benefits, which would help the most SS-reliant mothers; or (3) targeted supplements for divorced mothers who lost spousal benefit eligibility through short marriages. The evidence suggests option (3) would be most efficiently targeted at those facing compounding vulnerabilities.
+
 \subsection{Decomposition Robustness: Machado-Mata}
 
 Table \ref{tab:mm_decomp} compares the Chernozhukov-Fernández-Val-Melly decomposition with the Machado-Mata decomposition to assess sensitivity to decomposition methodology.
@@ -1135,6 +1196,87 @@ Unexplained share & 68\% & 62\% & $-$8\% & $-$5\% & $-$2\% \\
 \end{table}
 
 The results support the insurance interpretation. Men show the same decomposition pattern: unexplained factors account for 68\% of the gap at the 10th percentile (vs. 78\% for women), declining to small negative shares at high quantiles. If the unexplained component were capturing female-specific unobservables (e.g., career discrimination against mothers), we would not expect it to dominate for men. The fact that it does suggests the unexplained component is capturing something that affects both genders---consistent with children's insurance value.
+
+\subsection{Cohort Comparison: Is the Penalty Changing?}
+
+We compare older (born 1957--1960) and younger (born 1961--1964) cohorts within our NLSY79-matched sample to assess whether the motherhood penalty is changing over time. These cohorts entered the labor market at different times---the older cohort during 1975--1982 (pre-women's labor force expansion) and the younger cohort during 1979--1986 (during the expansion).
+
+Table \ref{tab:cohort_gap} presents household income gaps by birth cohort. The younger cohort shows a substantially smaller gap: $-7.8$\% compared to $-48.8$\% for the older cohort---a 41 percentage point difference. (Note: negative values indicate mothers have \textit{higher} household income, reflecting spousal income pooling.) The gap reduction is particularly pronounced for women with 2 children (52.8 pp reduction) and college-educated women (90.2 pp reduction).
+
+\begin{table}[htbp]
+\centering
+\caption{Cohort Comparison: Household Income Gap (HRS, Women Ages 50--65)}
+\label{tab:cohort_gap}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+ & Older (1957--1960) & Younger (1961--1964) & Difference \\
+\midrule
+Overall gap & $-48.8$\% & $-7.8$\% & +41.0 pp \\
+\midrule
+\textit{By Number of Children} \\
+1 child & $-39.0$\% & $-17.4$\% & +21.6 pp \\
+2 children & $-77.4$\% & $-24.6$\% & +52.8 pp \\
+3--4 children & $-50.7$\% & $-7.9$\% & +42.9 pp \\
+\midrule
+\textit{By Education} \\
+HS Graduate & $-29.2$\% & $+22.2$\% & +51.4 pp \\
+Some College & $-61.5$\% & $-55.0$\% & +6.6 pp \\
+College+ & $-121.6$\% & $-31.4$\% & +90.2 pp \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Negative values indicate mothers have higher income than childless women (household income includes spousal contribution). The younger cohort shows substantially smaller gaps across all subgroups, consistent with workplace improvements and expanded female labor force participation during the 1980s.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{Interpretation.} The cohort difference is consistent with improvements in workplace policies and norms that reduced motherhood penalties for younger women. However, caveats apply: the 7-year birth cohort range provides limited variation, and differences may reflect age-at-observation effects rather than true cohort effects. The individual pension gap tells a more nuanced story: for the older cohort, mothers show a +20.9\% gap (mothers receive \textit{less} in pensions), while the younger cohort shows a $-27.1$\% gap. This suggests that while household income convergence has occurred, individual pension accumulation patterns may be evolving differently.
+
+\subsection{Robustness Checks: Specification Sensitivity}
+
+We assess sensitivity to key specification choices: childlessness definition, birth cohort range, income trimming, and income measure. Table \ref{tab:robustness} summarizes the results.
+
+\begin{table}[htbp]
+\centering
+\caption{Robustness Checks: Sensitivity Analysis (HRS, Women Ages 50--65)}
+\label{tab:robustness}
+\begin{threeparttable}
+\begin{tabular}{lcc}
+\toprule
+Specification & Gap & Notes \\
+\midrule
+\textit{Childlessness Definition} \\
+Baseline (max children = 0) & $-24.0$\% & Standard definition \\
+Conservative (0 all waves) & $-24.1$\% & Nearly identical \\
+Liberal (majority childless) & $-23.1$\% & Slightly smaller \\
+\midrule
+\textit{Birth Cohort Range} \\
+Baseline (1957--1964) & $-25.6$\% & NLSY79 overlap \\
+Narrow (1958--1963) & $-23.1$\% & Excluding edges \\
+Wide (1955--1966) & $-15.5$\% & Broader range \\
+\midrule
+\textit{Income Trimming} \\
+Baseline (all positive) & $-25.6$\% & Full sample \\
+Trim 1\% & $-15.5$\% & Exclude outliers \\
+Trim 5\% & $-15.4$\% & Aggressive trimming \\
+Winsorize 1\% & $-19.0$\% & Cap extremes \\
+\midrule
+\textit{Income Measure} \\
+Household total income & $-25.6$\% & Includes spouse \\
+Individual pension & $+6.8$\% & Own accumulation \\
+Individual earnings & $-0.1$\% & Current earnings \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Negative values indicate mothers have higher income/earnings. Results are highly robust to childlessness definition and moderately sensitive to birth cohort range and trimming. The most important sensitivity is income measure: household total income shows mothers ahead ($-25.6$\%), while individual pension shows childless ahead ($+6.8$\%). This confirms our methodological point about household vs. individual measurement.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{Key findings.} Results are highly robust to childlessness definition (gap ranges from $-23.1$\% to $-24.1$\%). Birth cohort range and income trimming show moderate sensitivity (10 pp range). The most important sensitivity is income measure: household total income shows mothers with higher income ($-25.6$\%), while individual pension shows childless women with higher income ($+6.8$\%). This 32 pp difference confirms our central methodological point: household measures mask individual-level penalties because mothers are more likely to have spousal income.
 
 \section{Discussion}
 
@@ -1274,6 +1416,34 @@ These findings fundamentally challenge how we conceptualize the economic consequ
     \includegraphics[width=0.9\textwidth]{../figures/profile_comparison.png}
     \caption{Extreme Profile Comparison. The five lowest-income and five highest-income profiles by marital status, education, and number of children. The ratio between highest and lowest profiles exceeds 10:1, illustrating extreme heterogeneity masked by aggregate statistics.}
     \label{fig:profile_comparison}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/social_security_motherhood.png}
+    \caption{Social Security Benefits by Motherhood Status. Left panel shows mean SS retirement benefits by number of children; right panel shows SS reliance (share of household income) for mothers vs. childless women. The SS gap (8.1\%) is smaller than private pension gaps, but mothers are more reliant on SS despite receiving lower benefits.}
+    \label{fig:ss_motherhood}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/social_security_marital_gap.png}
+    \caption{Social Security Motherhood Gap by Marital Status. The SS gap varies substantially by marital status, from 4.2\% for married women to 24.2\% for widowed women. This reflects differential access to spousal and survivor benefits.}
+    \label{fig:ss_marital}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/cohort_comparison.png}
+    \caption{Cohort Comparison: Motherhood Gap by Birth Year. Left panel: overall household income gap by birth cohort, showing substantial narrowing from $-48.8$\% (older) to $-7.8$\% (younger). Right panel: gap by education and cohort, with college-educated women showing the largest cohort differences.}
+    \label{fig:cohort_comparison}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/robustness_checks.png}
+    \caption{Robustness Checks Summary. Four panels showing sensitivity of the motherhood gap to: (A) childlessness definition, (B) birth cohort range, (C) income trimming, and (D) income measure. Results are robust to definition and trimming but highly sensitive to income measure (household vs. individual).}
+    \label{fig:robustness}
 \end{figure}
 
 \section{Sensitivity to First-Stage Specification}
