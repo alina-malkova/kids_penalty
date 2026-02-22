@@ -1278,6 +1278,41 @@ Individual earnings & $-0.1$\% & Current earnings \\
 
 \textbf{Key findings.} Results are highly robust to childlessness definition (gap ranges from $-23.1$\% to $-24.1$\%). Birth cohort range and income trimming show moderate sensitivity (10 pp range). The most important sensitivity is income measure: household total income shows mothers with higher income ($-25.6$\%), while individual pension shows childless women with higher income ($+6.8$\%). This 32 pp difference confirms our central methodological point: household measures mask individual-level penalties because mothers are more likely to have spousal income.
 
+\subsection{Health Status: Not a Primary Driver}
+
+One potential explanation for the motherhood gap is differential health status---if mothers have worse health due to childbearing or caregiving stress, this could reduce their earnings capacity. We examine whether health differences explain the income gap.
+
+Table \ref{tab:health} presents health status and income gaps. Critically, mothers and childless women report nearly identical health: mean scores of 2.95 vs. 2.92 (scale: 1=excellent, 5=poor). The share reporting fair/poor health is 63.7\% for mothers vs. 63.5\% for childless---virtually no difference.
+
+\begin{table}[htbp]
+\centering
+\caption{Health Status and Income Gap (HRS, Women Ages 50--65)}
+\label{tab:health}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+Health Status & Mothers Income & Childless Income & Gap \\
+\midrule
+Good/Excellent & \$127,902 & \$92,038 & $-39.0$\% \\
+Fair & \$87,952 & \$73,081 & $-20.3$\% \\
+Poor & \$45,343 & \$40,358 & $-12.4$\% \\
+\midrule
+\textit{Mean health score} & 2.95 & 2.92 & +0.03 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Health score ranges from 1 (excellent) to 5 (poor). Negative gap values indicate mothers have higher household income. The gap \textit{increases} among healthier women, the opposite of what health-as-mechanism would predict. This pattern is consistent with spousal income effects: healthier women are more likely to be married, and married mothers benefit from spousal income pooling.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The pattern within health categories is revealing: among women in good/excellent health, mothers have 39\% \textit{higher} household income than childless women. Among women in poor health, the gap narrows to 12\%. This is the \textit{opposite} of what we would expect if health were driving the motherhood gap---if poor health explained lower maternal income, the gap should be largest among unhealthy mothers, not healthy ones.
+
+This pattern is consistent with marriage selection: healthier women are more likely to be married, and married mothers benefit from spousal income pooling (explaining the larger gap among healthy women). Health status also varies by number of children: women with 5+ children report worse health (mean 3.17) than women with 2 children (mean 2.77), but this gradient explains little of the overall motherhood gap.
+
+\textbf{Conclusion.} Health differences do not explain the motherhood gap on retirement income. Mothers and childless women have nearly identical self-reported health, and income gaps persist---indeed, widen---when comparing women with similar health status. The gap is driven by career interruption effects and spousal income pooling, not differential health.
+
 \section{Discussion}
 
 \subsection{Reconciling Two Literatures}
@@ -1444,6 +1479,13 @@ These findings fundamentally challenge how we conceptualize the economic consequ
     \includegraphics[width=0.9\textwidth]{../figures/robustness_checks.png}
     \caption{Robustness Checks Summary. Four panels showing sensitivity of the motherhood gap to: (A) childlessness definition, (B) birth cohort range, (C) income trimming, and (D) income measure. Results are robust to definition and trimming but highly sensitive to income measure (household vs. individual).}
     \label{fig:robustness}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/health_caregiving_analysis.png}
+    \caption{Health Status and Motherhood Gap. (A) Self-reported health distribution by motherhood status---nearly identical. (B) Income gap by health status---gap is largest among healthy women. (C) Health by number of children---5+ children associated with worse health. (D) Income by health and motherhood---gaps persist within health categories.}
+    \label{fig:health}
 \end{figure}
 
 \section{Sensitivity to First-Stage Specification}
