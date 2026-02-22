@@ -996,6 +996,16 @@ Any family transfer received & +9.8 pp & +6.2 pp & +3.0 pp & +0.4 pp \\
 
 The evidence strongly supports the insurance interpretation. Low-income mothers are 18.2\% likely to receive transfers from children, compared to only 4.2\% for high-income mothers. The transfer gap between mothers and childless women is 9.8 percentage points in the bottom income quartile but only 0.4 percentage points in the top quartile. This is precisely the pattern our model predicts: children's insurance value is concentrated at low incomes where formal safety nets are weakest. While HRS measures household income (subject to the caveats discussed earlier), this direct evidence on transfer receipt substantially strengthens the mechanistic interpretation.
 
+\subsection{Net Transfers: Flows in Both Directions}
+
+The transfer analysis above considers only flows \textit{from} children to parents. However, intergenerational transfers flow in both directions, and the \textit{net} transfer position may differ from gross receipts. High-income mothers likely give substantial support \textit{to} adult children---college tuition, down payment assistance, grandchild expenses---potentially offsetting or reversing the gross transfer pattern.
+
+Using ``other household income'' from HRS as an imperfect proxy for transfer-related income, we find suggestive evidence of income-varying net flows. In the bottom quartile, mothers receive \$98 more in other income than childless women, consistent with the insurance mechanism. However, in the top quartile, childless women receive \$3,269 \textit{more} in other income than mothers---a reversal that could reflect high-income mothers' resources flowing \textit{out} to adult children rather than in.
+
+This pattern has important implications for interpreting the reversal point. Below the reversal (Q1--Q2), children provide net support to struggling mothers, enhancing their retirement security. Above the reversal (Q3--Q4), mothers may face a ``double burden'': lower earnings due to career interruptions \textit{plus} ongoing financial support to adult children. If true, the childless premium at high quantiles reflects not just career advantages but also resource retention---childless women keep wealth that mothers transfer to the next generation.
+
+We emphasize this evidence is indirect: the RAND HRS harmonized file does not include the detailed Family Transfer Module needed to directly observe bidirectional flows. Future research with access to raw HRS transfer data should examine (1) the magnitude of transfers \textit{to} adult children by parental income, (2) the timing of major transfers around children's life events, and (3) whether high-income mothers' giving capacity represents a welfare-enhancing choice or a constraint on their own retirement security.
+
 \subsection{Decomposition Robustness: Machado-Mata}
 
 Table \ref{tab:mm_decomp} compares the Chernozhukov-Fernández-Val-Melly decomposition with the Machado-Mata decomposition to assess sensitivity to decomposition methodology.
@@ -1176,6 +1186,13 @@ These findings fundamentally challenge how we conceptualize the economic consequ
     \includegraphics[width=0.9\textwidth]{../figures/timing_first_birth_summary.png}
     \caption{Summary Comparison of Retirement Savings by Timing. Childless women (reference) compared to mothers by age at first birth. The gradient is monotonic for early mothers but reverses for 30+ mothers.}
     \label{fig:timing_summary}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/net_transfers_conceptual.png}
+    \caption{Conceptual Framework for Net Intergenerational Transfers. The direction of net transfers likely varies by income: low-income parents receive net support from children (insurance mechanism), while high-income parents provide net support to children (reduces effective retirement wealth).}
+    \label{fig:net_transfers}
 \end{figure}
 
 \section{Sensitivity to First-Stage Specification}
