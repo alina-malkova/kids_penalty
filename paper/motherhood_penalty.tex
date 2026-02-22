@@ -775,6 +775,152 @@ Likely voluntary (N=114) & $-0.132^{***}$ & $-0.082^{**}$ & $0.078^{**}$ & $0.11
 
 The key finding is that the reversal pattern persists even among likely involuntarily childless women. This subgroup did not ``choose'' childlessness for career advancement, yet they still face penalties at low quantiles ($-17.8\%$ at the 10th percentile) and premiums at high quantiles ($+10.8\%$ at the 90th percentile). The reversal point is slightly higher for involuntary childlessness (42nd vs. 34th percentile), which could reflect that this group has less career-oriented characteristics on average. While this classification is imperfect, the persistence of the pattern among involuntarily childless women substantially strengthens the causal interpretation.
 
+\subsection{Heterogeneity by Marital Status}
+
+Marital status fundamentally shapes how childlessness affects retirement income, both through direct channels (spousal income, Social Security benefits) and indirect channels (marriage market selection). We examine how the motherhood gap varies across marital status categories using HRS data for the 1957--1964 birth cohort.
+
+Table \ref{tab:marital_composition} reveals striking compositional differences: 32.6\% of never-married women are childless, compared to only 5.0\% of currently married women. This six-fold difference implies that comparisons of mothers versus childless women confound fertility effects with marriage selection effects.
+
+\begin{table}[htbp]
+\centering
+\caption{Sample Composition by Marital Status and Motherhood (HRS, Women Ages 50--65)}
+\label{tab:marital_composition}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+Marital Status & N Mothers & N Childless & \% Childless \\
+\midrule
+Married/Partnered & 2,171 & 115 & 5.0\% \\
+Divorced/Separated & 902 & 73 & 7.5\% \\
+Widowed & 350 & 18 & 4.9\% \\
+Never Married & 290 & 140 & 32.6\% \\
+\midrule
+Total & 3,713 & 346 & 8.5\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Data from HRS 2022 wave. Childless women are disproportionately never-married, creating compositional differences that affect interpretation of motherhood gaps.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Table \ref{tab:marital_gap} presents the motherhood gap by marital status. The pattern is striking: among married women, mothers have \textit{higher} household income than childless women ($-7.7\%$ gap), while among never-married women, mothers have \textit{dramatically lower} income ($+50.5\%$ gap). This reversal reflects two mechanisms: (1) married mothers benefit from spousal income that offsets individual career penalties, and (2) never-married mothers face the full career cost without spousal support.
+
+\begin{table}[htbp]
+\centering
+\caption{Motherhood Gap by Marital Status (HRS, Women Ages 50--65)}
+\label{tab:marital_gap}
+\begin{threeparttable}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{2}{c}{Sample Size} & \multicolumn{2}{c}{Mean HH Income} & \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Marital Status & Mothers & Childless & Mothers & Childless & Gap (\%) \\
+\midrule
+Married/Partnered & 2,108 & 110 & \$122,365 & \$113,578 & $-7.7\%$ \\
+Divorced/Separated & 847 & 71 & \$45,948 & \$49,116 & $+6.4\%$ \\
+Widowed & 323 & 18 & \$38,177 & \$39,737 & $+3.9\%$ \\
+Never Married & 264 & 135 & \$25,713 & \$51,965 & $+50.5\%$ \\
+\midrule
+Overall & 3,542 & 334 & \$89,547 & \$66,892 & $-25.3\%$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Gap is calculated as (Childless $-$ Mothers)/Childless $\times$ 100. Positive values indicate mothers earn less. The overall gap appears negative (mothers earn more) because mothers are more likely to be married; within marital status categories, the pattern varies dramatically.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{Identifying vulnerable groups.} Table \ref{tab:vulnerability} compares income across four groups that represent different combinations of family structure and fertility. The most vulnerable groups are widowed mothers (median income \$23,520) and divorced mothers (\$26,892), who face both career penalties from childbearing and loss of spousal income. Never-married childless women, despite lacking spousal support, have substantially higher median income (\$32,976) than divorced or widowed mothers---consistent with uninterrupted career trajectories compensating for absent spousal benefits.
+
+\begin{table}[htbp]
+\centering
+\caption{Vulnerability Analysis: Income by Family Structure (HRS, Women Ages 50--65)}
+\label{tab:vulnerability}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+Group & N & Mean Income & Median Income & Gap vs. Married Mothers \\
+\midrule
+Married Mothers & 2,108 & \$122,365 & \$79,808 & --- \\
+Never-Married Childless & 135 & \$51,965 & \$32,976 & $-59\%$ \\
+Divorced Mothers & 847 & \$45,948 & \$26,892 & $-66\%$ \\
+Widowed Mothers & 323 & \$38,177 & \$23,520 & $-71\%$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Gap calculated relative to married mothers' median income. Widowed and divorced mothers face the largest income gaps, suggesting a ``double penalty'' from career costs plus lost spousal support.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{Social Security implications.} Marital status determines eligibility for Social Security spousal (50\% of spouse's benefit) and survivor (100\%) benefits. Divorced women married 10+ years retain eligibility for spousal benefits on their ex-spouse's record, but those with shorter marriages lose this protection entirely. Among our sample, widowed mothers are most likely to receive Social Security income (17.0\%), followed by divorced mothers (15.1\%), while married mothers---who may delay claiming or rely on spousal income---show only 3.2\% receiving. This pattern suggests that divorced and widowed mothers depend more heavily on their own Social Security records, which reflect career interruptions for childbearing.
+
+\textbf{Policy implications.} These findings complicate the case for universal motherhood pension credits. Married mothers---60\% of mothers in our sample---already benefit from spousal income and Social Security provisions that largely offset individual career penalties. Meanwhile, the most vulnerable group---divorced mothers with short marriages---faces both career costs and loss of spousal benefits, a combination that pension credits alone cannot address. Targeting retirement support by both fertility \textit{and} marital status would more efficiently direct resources to those facing genuine economic vulnerability.
+
+\subsection{Heterogeneity by Timing of First Birth}
+
+The timing of first birth represents a key dimension of heterogeneity largely unexplored in the retirement income literature. Early childbearing may interrupt human capital accumulation and compound into larger retirement deficits, while delayed childbearing allows career establishment before family formation. We calculate age at first birth from the NLSY79 panel and examine how retirement savings vary by timing.
+
+Table \ref{tab:timing} presents IRA savings by age at first birth, comparing each timing group to childless women. The gradient is striking: teen mothers ($<$20) and early-20s mothers (20--24) face penalties of 43--45\%, late-20s mothers (25--29) face only a 16\% penalty, and remarkably, early-30s mothers (30--34) show a 54\% \textit{premium} over childless women.
+
+\begin{table}[htbp]
+\centering
+\caption{Retirement Savings by Timing of First Birth (NLSY79, Women Ages 54--61)}
+\label{tab:timing}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+Age at First Birth & N & Mean IRA & Median IRA & Gap vs. Childless \\
+\midrule
+Childless (reference) & 182 & \$177,964 & \$100,000 & --- \\
+\midrule
+Teen ($<$20) & 63 & \$102,099 & \$40,000 & $+42.6\%$ \\
+Early 20s (20--24) & 155 & \$97,157 & \$40,000 & $+45.4\%$ \\
+Late 20s (25--29) & 164 & \$149,766 & \$65,500 & $+15.8\%$ \\
+Early 30s (30--34) & 86 & \$273,246 & \$80,000 & $-53.5\%$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: IRA savings from 2018 NLSY79 survey. Gap calculated as (Childless $-$ Mothers)/Childless $\times$ 100. Positive values indicate mothers have less savings. The gradient is monotonic: earlier childbearing is associated with larger penalties, while women who delayed to their 30s show a substantial \textit{premium}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The reversal for 30+ mothers---who accumulate 54\% \textit{more} retirement savings than childless women---likely reflects strong selection effects rather than a causal benefit of delayed childbearing. Women who delay childbearing to their 30s are disproportionately college-educated, career-oriented, and high-earning. Their decision to delay reflects characteristics (ambition, career commitment, higher earnings potential) that independently predict retirement wealth. Nevertheless, even accounting for this selection, the gradient across timing categories suggests that the ``motherhood penalty'' is not uniform---it falls most heavily on women who had children before establishing their careers.
+
+Pension income shows a similar pattern (Table \ref{tab:timing_pension}), though with smaller sample sizes. Teen and early-20s mothers face pension penalties of 35--37\%, while late-20s mothers face a 31\% penalty. Interestingly, early-30s mothers also show a large penalty on pension income ($+37\%$), contrasting with their IRA premium. This divergence may reflect that pensions depend on continuous employment (which any childbearing interrupts), while IRA accumulation benefits from high peak earnings (which delayed mothers achieve).
+
+\begin{table}[htbp]
+\centering
+\caption{Pension Income by Timing of First Birth (NLSY79, Women Ages 54--61)}
+\label{tab:timing_pension}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+Age at First Birth & N & Mean Pension & Median Pension & Gap vs. Childless \\
+\midrule
+Childless (reference) & 40 & \$29,379 & \$20,000 & --- \\
+\midrule
+Teen ($<$20) & 33 & \$18,488 & \$9,600 & $+37.1\%$ \\
+Early 20s (20--24) & 48 & \$19,225 & \$15,000 & $+34.6\%$ \\
+Late 20s (25--29) & 43 & \$20,167 & \$16,800 & $+31.4\%$ \\
+Early 30s (30--34) & 19 & \$18,393 & \$16,000 & $+37.4\%$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Notes: Pension income from 2018 NLSY79 survey. Sample limited to those receiving pension income. The pension penalty shows less variation by timing than IRA savings, suggesting that even delayed childbearing creates pension disadvantages through employment continuity requirements.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{Policy implications.} The strong timing gradient suggests that teen pregnancy prevention has long-term retirement security benefits beyond the well-documented effects on education and employment. However, the premium observed for 30+ mothers cautions against interpreting this as a pure causal effect of timing---selection effects are clearly substantial. From a targeting perspective, women who had children as teenagers face the most severe retirement deficits (43\% IRA penalty, 37\% pension penalty) and may warrant priority in retirement support policies.
+
 \subsection{Total Retirement Wealth}
 
 Pension income is one component of retirement security. To address concerns that our findings reflect substitution across savings vehicles rather than genuine inequality, Table \ref{tab:total_wealth} presents QTEs on a broader measure of total retirement wealth.
@@ -945,6 +1091,8 @@ Our findings reveal a fundamental flaw in universal pension compensation for chi
 
 The reversal point at the 40th percentile provides a natural threshold for policy targeting. Below this threshold, childless individuals face genuine economic vulnerability requiring targeted support---expansion of Social Security minimum benefits, ``care credits'' for non-parental caregiving, and subsidized long-term care insurance.
 
+\textbf{Marital status complicates targeting.} Our analysis of marital status heterogeneity (Tables \ref{tab:marital_composition}--\ref{tab:vulnerability}) reveals that the most economically vulnerable women are not low-income childless women but rather \textit{divorced and widowed mothers}. These women face a ``double penalty'': career costs from childbearing combined with loss of spousal income and potentially Social Security spousal benefits (if marriage lasted less than 10 years). Divorced mothers have median household income of \$26,892 and widowed mothers \$23,520, compared to \$32,976 for never-married childless women. This pattern suggests that targeting retirement support by fertility status alone misses the key source of vulnerability---marital dissolution among mothers. Policy interventions should consider the interaction of fertility and marital history, with particular attention to divorced mothers whose marriages were too short to qualify for Social Security spousal benefits.
+
 \subsection{Limitations}
 
 Several limitations warrant acknowledgment, though our additional analyses address several previous concerns:
@@ -967,7 +1115,11 @@ This paper documents that the motherhood gap in income varies dramatically acros
 
 Several additional findings strengthen our conclusions. The reversal exhibits a dose-response pattern by number of children, persists among likely involuntarily childless women, and is robust across conditional QTE, unconditional QTE (RIF), and inverse probability weighted specifications. The pattern extends beyond pension income to total retirement wealth. Education heterogeneity---with the reversal point shifting from the 72nd percentile for women with less than high school to the 28th percentile for college graduates---provides a testable comparative static that the data confirm.
 
-These findings fundamentally challenge how we conceptualize the economic consequences of fertility decisions. The ``motherhood penalty'' and ``old-age security'' perspectives are both correct---but at different points in the distribution. Universal pension policies that ignore this heterogeneity may inadvertently increase the inequality they purport to address. Our back-of-envelope calculations suggest that approximately 60\% of expenditure on universal motherhood credits would flow to women who already benefit from childlessness, while the most vulnerable group---low-income childless women---receives nothing.
+Marital status heterogeneity adds a crucial dimension: the motherhood gap reverses sign across marital status categories. Among married women, mothers have \textit{higher} household income than childless women (spousal income offsets career penalties), while among never-married women, mothers face a 50\% income gap. The most vulnerable groups are divorced and widowed mothers, who face both career penalties and loss of spousal support---a ``double penalty'' that universal motherhood credits cannot address. This finding suggests that retirement policy should target the interaction of fertility and marital history, not fertility alone.
+
+The timing of first birth provides another dimension of heterogeneity with clear policy relevance. Teen and early-20s mothers face IRA penalties of 43--45\%, while late-20s mothers face only a 16\% penalty. Remarkably, women who delayed childbearing to their 30s show a 54\% \textit{premium} in IRA savings over childless women---though this likely reflects selection (career-oriented women who delay) rather than a causal benefit of late childbearing. These findings suggest that teen pregnancy prevention has retirement security benefits that extend far beyond the immediate effects on education and employment.
+
+These findings fundamentally challenge how we conceptualize the economic consequences of fertility decisions. The ``motherhood penalty'' and ``old-age security'' perspectives are both correct---but at different points in the distribution. Universal pension policies that ignore this heterogeneity may inadvertently increase the inequality they purport to address. Our back-of-envelope calculations suggest that approximately 60\% of expenditure on universal motherhood credits would flow to women who already benefit from childlessness, while the most vulnerable groups---divorced mothers and low-income childless women---receive inadequate support.
 
 \newpage
 \printbibliography
@@ -996,6 +1148,34 @@ These findings fundamentally challenge how we conceptualize the economic consequ
     \includegraphics[width=0.9\textwidth]{../figures/motherhood_penalty_by_race.png}
     \caption{Heterogeneity by Race}
     \label{fig:race}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/marital_status_motherhood_gap.png}
+    \caption{Motherhood Gap by Marital Status. Left panel shows mean household income for mothers and childless women by marital status. Right panel shows the percentage gap. The pattern reverses: married mothers have higher income than married childless women (spousal contribution), while never-married mothers have substantially lower income than never-married childless women.}
+    \label{fig:marital}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/vulnerability_comparison.png}
+    \caption{Vulnerability Comparison by Family Structure. Median household income for four groups: married mothers (reference), divorced mothers, widowed mothers, and never-married childless women. Divorced and widowed mothers face the largest income gaps relative to married mothers.}
+    \label{fig:vulnerability}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/timing_first_birth_ira.png}
+    \caption{Retirement Savings by Timing of First Birth. Left panel shows mean IRA savings by age at first birth, with childless reference line. Right panel shows the percentage gap. Teen and early-20s mothers face penalties of 43--45\%, while 30+ mothers show a 54\% premium reflecting strong selection effects.}
+    \label{fig:timing_ira}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/timing_first_birth_summary.png}
+    \caption{Summary Comparison of Retirement Savings by Timing. Childless women (reference) compared to mothers by age at first birth. The gradient is monotonic for early mothers but reverses for 30+ mothers.}
+    \label{fig:timing_summary}
 \end{figure}
 
 \section{Sensitivity to First-Stage Specification}
